@@ -39,39 +39,34 @@ function init(self)
 	self.currentCombat = "c_idle"
 	self.combatStates[self.currentCombat].enter(self.stateVars)
 
+	--prepinani stavu OOOOOO
+	self.switchAPI = {
+		changeMovement = function(api, newState)
+			if self.currentMov ~= newState and self.movStates[newState] then
+				self.movStates[self.currentMov].exit(self.stateVars)
+				self.currentMov = newState
+				self.movStates[self.currentMov].enter(self.stateVars)
+			end
+		end,
+		changeCombat = function(api, newState)
+			if self.currentCombat ~= newState and self.combatStates[newState] then
+				self.combatStates[self.currentCombat].exit(self.stateVars)
+				self.currentCombat = newState
+				self.combatStates[self.currentCombat].enter(self.stateVars)
+			end
+		end
+
+	}
+
 	
 end
 
 function update(self, dt)
-	
+	self.movStates[self.currentMov].update(self.stateVars, dt, self.switchAPI)
+	self.combatStates[self.currentCombat].update(self.stateVars, dt, self.switchAPI)
 end
 
-function late_update(self, dt)
-end
-
-function fixed_update(self, dt)
-end
-
-function on_message(self, message_id, message, sender)
-end
-
-function on_input(self, action_id, action)	
-	--hezcejc
-	if action_id == hash("right") then
-		if action.pressed then
-			self.input_x = 1
-		elseif action.released and self.input_x == 1 then
-			self.input_x = 0
-		end
-
-	elseif action_id == hash("left") then
-		if action.pressed then
-			self.input_x = -1
-		elseif action.released and self.input_x == -1 then
-			self.input_x = 0
-		end
-	end
-end
-
-function on_reload(self)
+function on_input(self, action_id, action)
+	self.movStates[self.currentMov].handle_input(self.stateVars, actionId, action, self.switchAPI)
+	self.combatStates[self.currentCombat].handle_input(self.stateVars, actionId, action, self.switchAPI)
 end

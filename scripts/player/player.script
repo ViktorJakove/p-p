@@ -1,4 +1,4 @@
-local m_run = require "scripts.player.movement.m_jump"
+local m_run = require "scripts.player.movement.m_run"
 local m_jump = require "scripts.player.movement.m_jump"
 local m_idle = require "scripts.player.movement.m_idle"
 local m_twirl = require "scripts.player.movement.m_twirl"
@@ -67,6 +67,6 @@ function update(self, dt)
 end
 
 function on_input(self, action_id, action)
-	self.movStates[self.currentMov].handle_input(self.stateVars, actionId, action, self.switchAPI)
-	self.combatStates[self.currentCombat].handle_input(self.stateVars, actionId, action, self.switchAPI)
+	self.movStates[self.currentMov].handle_input(self.stateVars, action_id, action, self.switchAPI)
+	self.combatStates[self.currentCombat].handle_input(self.stateVars, action_id, action, self.switchAPI)
 end

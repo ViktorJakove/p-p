@@ -1,0 +1,77 @@
+local m_run = require "scripts.player.movement.m_jump"
+local m_jump = require "scripts.player.movement.m_jump"
+local m_idle = require "scripts.player.movement.m_idle"
+local m_twirl = require "scripts.player.movement.m_twirl"
+
+local c_idle = require "scripts.player.movement.c_idle"
+local c_attack = require "scripts.player.movement.c_attack"
+local c_leap = require "scripts.player.movement.c_leap"
+
+go.property("speed", 0)
+go.property("jumpTime",0)
+go.property("jumpForce", 0)
+go.property("gravity", 0)
+
+go.property("twirlForce", 0)
+go.property("poundForce", 0)
+
+go.property("speedupTime", 0)
+go.property("speedFaster", 0)
+
+
+function init(self)
+	msg.post("#", "acquire_input_focus")
+
+	--stavovy objekt!!!!
+	self.stateVars = {
+		speed = self.speed,
+		velocity = vmath.vector3(),
+		isGrounded = false,
+		dirKeys = {left = false, right = false},
+		isAttacking = false
+	}
+	
+	self.movStates = {m_idle = m_idle, m_run = m_run, m_jump = m_jump, m_twirl = m_twirl}
+	self.currentMov = "m_idle"
+	self.movStates[self.currentMov].enter(self.stateVars)
+
+	self.combatStates = {c_idle = c_idle, c_attack = c_attack, c_leap = c_leap}
+	self.currentCombat = "c_idle"
+	self.combatStates[self.currentCombat].enter(self.stateVars)
+
+	
+end
+
+function update(self, dt)
+	
+end
+
+function late_update(self, dt)
+end
+
+function fixed_update(self, dt)
+end
+
+function on_message(self, message_id, message, sender)
+end
+
+function on_input(self, action_id, action)	
+	--hezcejc
+	if action_id == hash("right") then
+		if action.pressed then
+			self.input_x = 1
+		elseif action.released and self.input_x == 1 then
+			self.input_x = 0
+		end
+
+	elseif action_id == hash("left") then
+		if action.pressed then
+			self.input_x = -1
+		elseif action.released and self.input_x == -1 then
+			self.input_x = 0
+		end
+	end
+end
+
+function on_reload(self)
+end

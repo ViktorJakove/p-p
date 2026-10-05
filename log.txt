@@ -14,4 +14,239 @@ INFO:SOUND:   nSamplesPerSec:   48000
 INFO:SOUND:        useThread:   1
 INFO:ENGINE: Initialised sound device 'default'
 INFO:PHYSICS: Created physics context: Box2D v2.2.1
-DEBUG:SCRIPT: Touch!
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+
+ERROR:SCRIPT: scripts/player/movement.script:26: attempt to perform arithmetic on field 'input_x' (a nil value)
+stack traceback:
+  scripts/player/movement.script:26: in function <scripts/player/movement.script:23>
+

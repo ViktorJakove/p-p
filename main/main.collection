@@ -4,8 +4,13 @@ embedded_instances {
   id: "player"
   children: "sprite"
   data: "components {\n"
-  "  id: \"main\"\n"
-  "  component: \"/main/main.script\"\n"
+  "  id: \"movement\"\n"
+  "  component: \"/scripts/player/movement.script\"\n"
+  "  properties {\n"
+  "    id: \"speed\"\n"
+  "    value: \"20.0\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
   "}\n"
   ""
   position {
@@ -34,5 +39,25 @@ embedded_instances {
 }
 embedded_instances {
   id: "sprite"
+  data: "embedded_components {\n"
+  "  id: \"label\"\n"
+  "  type: \"label\"\n"
+  "  data: \"size {\\n"
+  "  x: 373.0\\n"
+  "  y: 284.0\\n"
+  "}\\n"
+  "text: \\\"Label\\\"\\n"
+  "font: \\\"/builtins/fonts/default.font\\\"\\n"
+  "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
+  "\"\n"
+  "  scale {\n"
+  "    x: 13.1\n"
+  "    y: 15.4\n"
+  "  }\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "go"
   data: ""
 }

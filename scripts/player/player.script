@@ -1,11 +1,11 @@
-local m_run = require "scripts.player.movement.m_run"
-local m_jump = require "scripts.player.movement.m_jump"
-local m_idle = require "scripts.player.movement.m_idle"
-local m_twirl = require "scripts.player.movement.m_twirl"
+local m_run = require "scripts.player.moveset.m_run"
+local m_jump = require "scripts.player.moveset.m_jump"
+local m_idle = require "scripts.player.moveset.m_idle"
+local m_twirl = require "scripts.player.moveset.m_twirl"
 
-local c_idle = require "scripts.player.movement.c_idle"
-local c_attack = require "scripts.player.movement.c_attack"
-local c_leap = require "scripts.player.movement.c_leap"
+local c_idle = require "scripts.player.moveset.c_idle"
+local c_attack = require "scripts.player.moveset.c_attack"
+local c_leap = require "scripts.player.moveset.c_leap"
 
 go.property("speed", 0)
 go.property("jumpTime",0)
@@ -25,8 +25,11 @@ function init(self)
 	--stavovy objekt!!!!
 	self.stateVars = {
 		speed = self.speed,
+		gravity = self.gravity,
+		jumpForce = self.jumpForce,
 		velocity = vmath.vector3(),
-		isGrounded = false,
+		----fixyxxxxxnoutt tady ma byt false a proper check!!
+		isGrounded = true,
 		dirKeys = {left = false, right = false},
 		isAttacking = false
 	}
@@ -41,14 +44,14 @@ function init(self)
 
 	--prepinani stavu OOOOOO
 	self.switchAPI = {
-		changeMovement = function(api, newState)
+		changeMovement = function(newState)
 			if self.currentMov ~= newState and self.movStates[newState] then
 				self.movStates[self.currentMov].exit(self.stateVars)
 				self.currentMov = newState
 				self.movStates[self.currentMov].enter(self.stateVars)
 			end
 		end,
-		changeCombat = function(api, newState)
+		changeCombat = function(newState)
 			if self.currentCombat ~= newState and self.combatStates[newState] then
 				self.combatStates[self.currentCombat].exit(self.stateVars)
 				self.currentCombat = newState
@@ -64,6 +67,14 @@ end
 function update(self, dt)
 	self.movStates[self.currentMov].update(self.stateVars, dt, self.switchAPI)
 	self.combatStates[self.currentCombat].update(self.stateVars, dt, self.switchAPI)
+
+	--pohyb do stran (META skrznaskrz)
+	local pos = go.get_position()
+	pos = pos + self.stateVars.velocity * dt
+	go.set_position(pos)
+
+	--fixxxxx nezakomentovavat po kontorle zeme "!!!!
+	--self.stateVars.isGrounded = false
 end
 
 function on_input(self, action_id, action)

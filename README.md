@@ -1,9 +1,11 @@
 # P&P
 
-Nová gamesa
+Nová gamesa /n
 Featury:
 - extrem goated gameplay
 - extrem goated soundtrack
 - extrem
 
-Fly hiiiiiiiiiiiiiiigh 🛩️🛩️
+Fly hiiiiiiiiiiiiiiigh! 🛩️
+
+Coming never

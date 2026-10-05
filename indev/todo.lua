@@ -1,1 +1,3 @@
+-- ground check
+-- jump
 --coyote time

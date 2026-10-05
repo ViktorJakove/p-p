@@ -1,4 +1,15 @@
--- Put functions in this file to use them in several other scripts.
--- To get access to the functions, you need to put:
--- require "my_directory.my_file"
--- in any script using the functions.
+local M = {}
+
+function M.enter(stateVars)
+end
+
+function M.update(stateVars,dt, switchAPI)
+end
+
+function M.handle_input(stateVars, action_id, action, switchAPI)
+end	
+
+function M.exit(stateVars)
+end
+
+return M

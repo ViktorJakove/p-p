@@ -8,7 +8,7 @@ embedded_instances {
   "  component: \"/scripts/player/player.script\"\n"
   "  properties {\n"
   "    id: \"speed\"\n"
-  "    value: \"350.0\"\n"
+  "    value: \"35000.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "}\n"

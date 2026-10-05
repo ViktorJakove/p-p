@@ -1,4 +1,20 @@
--- Put functions in this file to use them in several other scripts.
--- To get access to the functions, you need to put:
--- require "my_directory.my_file"
--- in any script using the functions.
+local M = {}
+
+function M.enter(stateVars)
+	--anim doběhnutí ?????
+end
+
+function M.update(stateVars,dt, switchAPI)
+	
+end
+
+function M.handle_input(stateVars, action_id, action, switchAPI)
+
+	
+end	
+
+function M.exit(stateVars)
+	--anim frame rozeběhnutí
+end
+
+return M

@@ -7,7 +7,7 @@ end
 
 function M.update(stateVars,dt, switchAPI)
 	if not stateVars.isGrounded then
-		switchAPI:changeMovement("m_jump")
+		switchAPI.changeMovement("m_jump")
 	end
 end
 
@@ -20,9 +20,9 @@ function M.handle_input(stateVars, action_id, action, switchAPI)
 	end
 	
 	if stateVars.dirKeys.right or stateVars.dirKeys.left then
-		switchAPI:changeMovement("m_run")
+		switchAPI.changeMovement("m_run")
 	elseif action_id == hash("jump") and action.pressed and stateVars.isGrounded then
-		switchAPI:changeMovement("m_jump")
+		switchAPI.changeMovement("m_jump")
 	end
 end	
 

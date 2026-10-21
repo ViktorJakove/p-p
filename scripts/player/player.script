@@ -1,12 +1,16 @@
+local fsm = require "scripts.player.fsm"
+local state = require "scripts.player.state"
+
+local m_transitions = require "scripts.player.transitions"
 local m_run = require "scripts.player.moveset.m_run"
 local m_jump = require "scripts.player.moveset.m_jump"
 local m_fall = require "scripts.player.moveset.m_fall"
 local m_idle = require "scripts.player.moveset.m_idle"
 local m_twirl = require "scripts.player.moveset.m_twirl"
 
-local c_idle = require "scripts.player.moveset.c_idle"
-local c_attack = require "scripts.player.moveset.c_attack"
-local c_leap = require "scripts.player.moveset.c_leap"
+local c_idle = require "scripts.player.combat.c_idle"
+local c_attack = require "scripts.player.combat.c_attack"
+local c_leap = require "scripts.player.combat.c_leap"
 
 go.property("speed", 0)
 go.property("jumpTime",0)
@@ -23,102 +27,53 @@ go.property("speedFaster", 0)
 function init(self)
 	msg.post("#", "acquire_input_focus")
 
-	--stavovy objekt!!!!
-	self.stateVars = {
-		speed = self.speed,
-		gravity = self.gravity,
-		jumpForce = self.jumpForce,
-		velocity = vmath.vector3(),
-		----fixyxxxxxnoutt tady ma byt false a proper check!!
-		isGrounded = true,
-		dirKeys = {left = false, right = false},
-		isAttacking = false,
-		twirled = false
-	}
-	
-	self.movStates = {m_idle = m_idle, m_run = m_run, m_jump = m_jump, m_twirl = m_twirl, m_fall = m_fall}
-	self.currentMov = "m_idle"
-	self.movStates[self.currentMov].enter(self.stateVars)
+	self.vars = state.new(self)
 
-	self.combatStates = {c_idle = c_idle, c_attack = c_attack, c_leap = c_leap}
-	self.currentCombat = "c_idle"
-	self.combatStates[self.currentCombat].enter(self.stateVars)
+	self.mov = fsm.new({
+		m_idle = m_idle,
+		m_run  = m_run,
+		m_jump = m_jump,
+		m_fall = m_fall,
+	}, "m_idle", self.vars, m_transitions)
 
-	--prepinani stavu OOOOOO
-	self.switchAPI = {
-		changeMovement = function(newState)
-			if self.currentMov ~= newState and self.movStates[newState] then
-				self.movStates[self.currentMov].exit(self.stateVars)
-				self.currentMov = newState
-				self.movStates[self.currentMov].enter(self.stateVars)
-			end
-		end,
-		changeCombat = function(newState)
-			if self.currentCombat ~= newState and self.combatStates[newState] then
-				self.combatStates[self.currentCombat].exit(self.stateVars)
-				self.currentCombat = newState
-				self.combatStates[self.currentCombat].enter(self.stateVars)
-			end
-		end
+	self.combat = fsm.new({
+		c_idle = c_idle,
+		c_attack = c_attack,
+		c_leap = c_leap
+	}, "c_idle", self.vars)
 
-	}
-end
-
-
-local function movStateSwitcher(prevMov)
-	local moveDir = (self.stateVars.dirKeys.right and 1 or 0) - (self.stateVars.dirKeys.left and 1 or 0)
-
-	if self.stateVars.isGrounded then
-		if prevMov == "m_jump" then
-			if moveDir == 0 then
-				self.switchAPI.changeMovement("m_idle")
-			else
-				self.switchAPI.changeMovement("m_run")
-			end
-		elseif prevMov == "m_idle" and moveDir ~= 0 then
-			self.switchAPI.changeMovement("m_run")
-		elseif prevMov == "m_run" and moveDir == 0 then
-			self.switchAPI.changeMovement("m_idle")
-		end
-	else
-		if prevMov == "m_idle" or prevMov == "m_run" or (prevMov == "m_jump" and self.stateVars.velocity.y <= 0)then
-			self.switchAPI.changeMovement("m_fall")
-		end
-	end
 end
 
 function update(self, dt)
-	
-	local previousMov = self.currentMov
-	
-	self.movStates[self.currentMov].update(self.stateVars, dt, self.switchAPI)
-	self.combatStates[self.currentCombat].update(self.stateVars, dt, self.switchAPI)
 
-	--pohyb(META skrznaskrz)
-	local pos = go.get_position()
-	pos = pos + self.stateVars.velocity * dt
-	go.set_position(pos)
-
+	self.mov:update(dt)
+	self.comat:update(dt)
 	
-	--fixxxxx nezakomentovavat po kontorle zeme "!!!!
-	-----------------------------------------------self.stateVars.isGrounded = false
+	go.set_position(go.get_position() + self.vars.velocity *dt)
+end
 
-	-----SWITCH
-	movStateSwitcher(previousMov)
+function on_message(self, message_id, message, sender)
+
+	if message_id == hash("contact_point_response") then
+		if message.normal.y > 0.7 then
+			self.vars.isGrounded = true
+		end
+	end
+
 end
 
 function on_input(self, action_id, action)
+
+	local v = self.vars
 	
 	if action_id == hash("right") then 
-		self.stateVars.dirKeys.right = not action.released
+		v.dirKeys.right = not action.released
 	elseif action_id == hash("left") then
-		self.stateVars.dirKeys.left = not action.released
+		v.dirKeys.left = not action.released
 	end
 
-	if action_id == hash("jump") and action.pressed and self.stateVars.isGrounded then
-		self.switchAPI.changeMovement("m_jump")
-	end
+	v.moveDir = (v.dirKeys.right and 1 or 0) - (v.dirKeys.left and 1 or 0)
 	
-	self.movStates[self.currentMov].handle_input(self.stateVars, action_id, action, self.switchAPI)
-	self.combatStates[self.currentCombat].handle_input(self.stateVars, action_id, action, self.switchAPI)
+	self.mov:input(action_id,action)
+	self.combat:input(action_id, action)
 end

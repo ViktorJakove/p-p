@@ -14,6 +14,8 @@ INFO:SOUND:   nSamplesPerSec:   48000
 INFO:SOUND:        useThread:   1
 INFO:ENGINE: Initialised sound device 'default'
 INFO:PHYSICS: Created physics context: Box2D v2.2.1
-DEBUG:SCRIPT: vars	table: 0x01b32cc7dd40
-DEBUG:SCRIPT: mov	table: 0x01b32b2b30f0
-DEBUG:SCRIPT: combat	table: 0x01b32b2b3450
+DEBUG:SCRIPT: idle
+DEBUG:SCRIPT: fall
+DEBUG:SCRIPT: idle
+DEBUG:SCRIPT: run
+DEBUG:SCRIPT: fall

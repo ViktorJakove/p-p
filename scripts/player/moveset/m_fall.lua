@@ -3,6 +3,7 @@ local M = {}
 
 function M.enter(stateVars)
 	--anim
+	print("fall")
 end
 
 function M.update(vars,dt, fsm)

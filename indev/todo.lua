@@ -1,4 +1,3 @@
---ground check
 --crawl
 --highjump
 --twirl

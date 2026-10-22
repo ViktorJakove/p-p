@@ -12,7 +12,9 @@ local INTRO = {
 function M.enter(vars, from)
 	vars.velocity.x = 0
 	--anim doběhnutí ?????
-	anim.play(vars, "idle", INTRO[from])
+	--anim.play(vars, "idle", INTRO[from])
+	print("idle")
+	
 end
 
 function M.handle_input(vars, action_id, action, fsm)

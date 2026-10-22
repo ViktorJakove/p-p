@@ -4,6 +4,7 @@ M.tags = {grounded = true}
 
 function M.enter(stateVars)
 	--animacerun
+	print("run")
 end
 
 function M.update(vars, dt, fsm)

@@ -1,2 +1,6 @@
-function play(vars,anim,mezianim)
+local M = {}
+
+function M.play(vars, anim, intro)
 end
+
+return M

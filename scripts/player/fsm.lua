@@ -6,22 +6,22 @@ function M.new(states, init, vars, transitions)
 	transitions = transitions or {}
 
 	for _, s in pairs(states) do
-		s.enter = s.enter or noop()
-		s.update = s.update or noop()
-		s.handle_input = s.handle_input or noop()
-		s.exit = s.exit or noop()
+		s.enter = s.enter or noop
+		s.update = s.update or noop
+		s.handle_input = s.handle_input or noop
+		s.exit = s.exit or noop
 	end
 
 	local fsm = {states = states, current = init, vars = vars}
 
-	function fsm:chage(name)
+	function fsm:change(name)
 		if name == self.current or not self.states[name] then return end
 
 		local old = self.current
 		
 		self.states[old].exit(self.vars)
 		self.current = name
-		self.statues[name].enter(self.vars,old)
+		self.states[name].enter(self.vars,old)
 	end
 
 	local function first_match(self, rules, tags)
@@ -38,11 +38,11 @@ function M.new(states, init, vars, transitions)
 		local tags = self.states[self.current].tags or {}
 		local to = first_match(self, transitions[self.current], tags) or first_match(self, transitions.any, tags)
 		
-		if to then self.chage(to) end
+		if to then self:change(to) end
 	end
 
 	function fsm:input(acttion_id, action)
-		self.states[states.current].handle_input(self.vars, acttion_id, action, self)
+		self.states[self.current].handle_input(self.vars, acttion_id, action, self)
 	end
 	
 	states[init].enter(vars)

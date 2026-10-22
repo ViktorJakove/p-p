@@ -2,6 +2,8 @@ local ground = require "scripts.player.shared.ground"
 local anim = require("scripts.animations")
 local M = {}
 
+M.tags = {grounded = true}
+
 local INTRO = {
 	m_run = "run_stop",
 	m_fall = "land"

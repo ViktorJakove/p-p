@@ -42,6 +42,7 @@ function init(self)
 		c_leap = c_leap
 	}, "c_idle", self.vars)
 
+	self.correction = vmath.vector3()
 end
 
 function update(self, dt)
@@ -50,19 +51,36 @@ function update(self, dt)
 	self.combat:update(dt)
 	
 	go.set_position(go.get_position() + self.vars.velocity *dt)
+
+	self.vars.isGrounded = false
+	self.correction = vmath.vector3()
 end
 
 function on_message(self, message_id, message, sender)
-
+	
 	if message_id == hash("contact_point_response") then
+		if message.distance > 0 then
+			local proj = vmath.project(self.correction, message.normal * message.distance)
+			if proj < 1 then
+				local comp = (message.distance - message.distance *proj) * message.normal
+				go.set_position(go.get_position()+comp)
+				self.correction = self.correction + comp
+			end
+		end
+		
 		if message.normal.y > 0.7 then
 			self.vars.isGrounded = true
+		elseif message.normal.y < -0.7 and self.vars.velocity.y > 0 then
+			self.vars.velocity.y = 0 --bump
 		end
 	end
 
 end
 
 function on_input(self, action_id, action)
+
+	--debug
+	if not self.mov then return end
 
 	local v = self.vars
 	

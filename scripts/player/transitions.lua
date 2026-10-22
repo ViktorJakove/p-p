@@ -5,7 +5,7 @@ return {
 		{to = "m_run", when = c.moving_on_ground},
 	},
 	m_run = {
-		{to = "m_run", when = c.idle_on_ground},
+		{to = "m_idle", when = c.idle_on_ground},
 	},
 	m_jump = {
 		{to = "m_fall", when = c.peaked},

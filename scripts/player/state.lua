@@ -10,7 +10,7 @@ function M.new(props)
 			twirlForce = props.twirlForce,
 			poundForce = props.poundForce,
 			speedupTime = props.speedupTime,
-			speed2 = props.spped2,
+			speed2 = props.speed2,
 			crouchSpeed = props.crouchSpeed,
 			highjumpForce = props.highjumpForce
 		},

@@ -11,6 +11,8 @@ function M.new(props)
 			poundForce = props.poundForce,
 			speedupTime = props.speedupTime,
 			speed2 = props.spped2,
+			crouchSpeed = props.crouchSpeed,
+			highjumpForce = props.highjumpForce
 		},
 		velocity = vmath.vector3(),
 		moveDir = 0,

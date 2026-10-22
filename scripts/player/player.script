@@ -47,7 +47,7 @@ end
 function update(self, dt)
 
 	self.mov:update(dt)
-	self.comat:update(dt)
+	self.combat:update(dt)
 	
 	go.set_position(go.get_position() + self.vars.velocity *dt)
 end

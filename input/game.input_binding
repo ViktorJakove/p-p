@@ -42,6 +42,30 @@ key_trigger {
   input: KEY_RCTRL
   action: "attack"
 }
+key_trigger {
+  input: KEY_ENTER
+  action: "use"
+}
+key_trigger {
+  input: KEY_E
+  action: "use"
+}
+key_trigger {
+  input: KEY_Y
+  action: "jump"
+}
+key_trigger {
+  input: KEY_Z
+  action: "jump"
+}
+key_trigger {
+  input: KEY_C
+  action: "menu"
+}
+key_trigger {
+  input: KEY_ESC
+  action: "menu"
+}
 mouse_trigger {
   input: MOUSE_BUTTON_LEFT
   action: "touch"

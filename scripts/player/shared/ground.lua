@@ -1,4 +1,15 @@
--- Put functions in this file to use them in several other scripts.
--- To get access to the functions, you need to put:
--- require "my_directory.my_file"
--- in any script using the functions.
+--sharovany grounded stavama (idle, run,...)
+local M = {}
+local JUMP = hash("jump")
+
+function M.try_jump(vars, action_id, action, fsm)
+	if action_id == JUMP and action.pressed then
+		fsm:change("m_jump")
+	end
+end
+
+function M.try_highjump(vars, action_id, action, fsm)
+	
+end
+
+return M

@@ -1,8 +1,8 @@
 local M = {}
 
-function M.airborne(v) return not v.isGrounded end
-function M.peaked(v) return v.velocity <= 0 end
-function M.idle_on_ground(v) return v.isGrounded and v.moveDir == 0 end
-function M.moving_on_ground(v) return not v.isGrounded and v.moveDir ~= 0 end
+function M.airborne(vars) return not vars.isGrounded end
+function M.peaked(vars) return vars.velocity <= 0 end
+function M.idle_on_ground(vars) return vars.isGrounded and vars.moveDir == 0 end
+function M.moving_on_ground(vars) return not vars.isGrounded and vars.moveDir ~= 0 end
 
 return M

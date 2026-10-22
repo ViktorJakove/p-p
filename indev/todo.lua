@@ -1,3 +1,8 @@
--- ground check
+--ground check
+--crawl
+--highjump
 --twirl
+--pound
+--bounce
+--swim
 --coyote time

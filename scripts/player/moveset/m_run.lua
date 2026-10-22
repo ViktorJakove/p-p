@@ -1,16 +1,16 @@
+local ground = require("scripts.player.shared.ground")
 local M = {}
 
 function M.enter(stateVars)
 	--animacerun
 end
 
-function M.update(stateVars, dt, switchAPI)
-	local moveDir = (stateVars.dirKeys.right and 1 or 0) - (stateVars.dirKeys.left and 1 or 0)
-	stateVars.velocity.x = moveDir * stateVars.speed
+function M.update(vars, dt, fsm)
 	
 end
 
-function M.handle_input(stateVars, action_id, action, switchAPI)
+function M.handle_input(vars, action_id, action, fsm)
+	ground.try_jump(vars,action_id, action, fsm)
 end
 
 function M.exit(stateVars)

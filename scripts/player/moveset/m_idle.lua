@@ -1,9 +1,16 @@
 local ground = require "scripts.player.shared.ground"
+local anim = require("scripts.animations")
 local M = {}
 
-function M.enter(vars)
+local INTRO = {
+	m_run = "run_stop",
+	m_fall = "land"
+}
+
+function M.enter(vars, from)
 	vars.velocity.x = 0
 	--anim doběhnutí ?????
+	anim.play(vars, "idle", INTRO[from])
 end
 
 function M.handle_input(vars, action_id, action, fsm)

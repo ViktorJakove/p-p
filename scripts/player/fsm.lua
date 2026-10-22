@@ -16,9 +16,12 @@ function M.new(states, init, vars, transitions)
 
 	function fsm:chage(name)
 		if name == self.current or not self.states[name] then return end
-		self.states[self.current].exit(self.vars)
+
+		local old = self.current
+		
+		self.states[old].exit(self.vars)
 		self.current = name
-		self.statues[name].enter(self.vars)
+		self.statues[name].enter(self.vars,old)
 	end
 
 	local function first_match(self, rules, tags)

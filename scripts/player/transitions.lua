@@ -1,4 +1,20 @@
--- Put functions in this file to use them in several other scripts.
--- To get access to the functions, you need to put:
--- require "my_directory.my_file"
--- in any script using the functions.
+local c = require "scripts.player.conditions"
+
+return {
+	m_idle = {
+		{to = "m_run", when = c.moving_on_ground},
+	},
+	m_run = {
+		{to = "m_run", when = c.idle_on_ground},
+	},
+	m_jump = {
+		{to = "m_fall", when = c.peaked},
+	},
+	m_fall = {
+		{to = "m_run", when = c.moving_on_ground},
+		{to = "m_idle", when = c.idle_on_ground},
+	},
+	any = {
+		{to = "m_fall", tag = "grounded", when = c.airborne},
+	},
+}

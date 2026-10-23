@@ -4,6 +4,7 @@ local state = require "scripts.player.state"
 local m_transitions = require "scripts.player.transitions"
 local m_run = require "scripts.player.moveset.m_run"
 local m_jump = require "scripts.player.moveset.m_jump"
+local m_highjump = require "scripts.player.moveset.m_highjump"
 local m_fall = require "scripts.player.moveset.m_fall"
 local m_idle = require "scripts.player.moveset.m_idle"
 local m_twirl = require "scripts.player.moveset.m_twirl"
@@ -38,6 +39,7 @@ function init(self)
 		m_idle = m_idle,
 		m_run  = m_run,
 		m_jump = m_jump,
+		m_highjump = m_highjump,
 		m_fall = m_fall,
 		m_crouch = m_crouch
 	}, "m_idle", self.vars, m_transitions)

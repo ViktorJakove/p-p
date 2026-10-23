@@ -12,6 +12,9 @@ return {
 	m_jump = {
 		{to = "m_fall", when = c.peaked},
 	},
+	m_highjump = {
+		{to = "m_fall", when = c.peaked},
+	},
 	m_fall = {
 		{to = "m_crouch", when = c.crouching},
 		{to = "m_run", when = c.moving_on_ground},

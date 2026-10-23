@@ -1,6 +1,5 @@
---crawl
---init fallforce
 --highjump
+--init fallforce
 --twirl
 --pound
 --bounce

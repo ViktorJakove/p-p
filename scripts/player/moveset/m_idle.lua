@@ -17,6 +17,10 @@ function M.enter(vars, from)
 	
 end
 
+function M.update(vars,dt,fsm)
+	ground.stick(vars)
+end
+
 function M.handle_input(vars, action_id, action, fsm)
 	ground.try_jump(vars,action_id, action, fsm)
 end

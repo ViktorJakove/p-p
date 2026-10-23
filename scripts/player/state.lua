@@ -5,6 +5,7 @@ function M.new(props)
 		cfg = {
 			speed = props.speed,
 			gravity = props.gravity,
+			initFallForce = props.initFallForce,
 			jumpForce = props.jumpForce,
 			jumpTime = props.jumpTime,
 			twirlForce = props.twirlForce,
@@ -19,6 +20,7 @@ function M.new(props)
 		dirKeys = {left = false, right = false},
 		isGrounded = false,
 		isAttacking = false,
+		crouchHeld = false,
 		twirled = true,
 	}
 end

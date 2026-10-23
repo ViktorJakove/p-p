@@ -12,4 +12,8 @@ function M.try_highjump(vars, action_id, action, fsm)
 	
 end
 
+function M.stick(vars)
+	vars.velocity.y = -10
+end
+
 return M

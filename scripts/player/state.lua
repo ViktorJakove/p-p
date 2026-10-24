@@ -13,7 +13,8 @@ function M.new(props)
 			speedupTime = props.speedupTime,
 			speed2 = props.speed2,
 			crouchSpeed = props.crouchSpeed,
-			highjumpForce = props.highjumpForce
+			highjumpForce = props.highjumpForce,
+			highjumpUnlockTime = props.highjumpUnlockTime
 		},
 		velocity = vmath.vector3(),
 		moveDir = 0,

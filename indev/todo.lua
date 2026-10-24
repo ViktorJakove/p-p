@@ -1,4 +1,4 @@
---highjump
+--highjump i chvilinku po pusteni crouche
 --init fallforce
 --twirl
 --pound

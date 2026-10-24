@@ -8,7 +8,7 @@ local m_highjump = require "scripts.player.moveset.m_highjump"
 local m_fall = require "scripts.player.moveset.m_fall"
 local m_idle = require "scripts.player.moveset.m_idle"
 local m_twirl = require "scripts.player.moveset.m_twirl"
-local m_crouch = require("scripts.player.moveset.crouch")
+local m_crouch = require "scripts.player.moveset.m_crouch"
 
 local c_idle = require "scripts.player.combat.c_idle"
 local c_attack = require "scripts.player.combat.c_attack"
@@ -28,6 +28,7 @@ go.property("speed2", 0)
 
 go.property("crouchSpeed", 0)
 go.property("highjumpForce", 0)
+go.property("highjumpUnlockTime", 0)
 
 
 function init(self)

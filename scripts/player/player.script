@@ -10,6 +10,7 @@ local m_idle = require "scripts.player.moveset.m_idle"
 local m_twirl = require "scripts.player.moveset.m_twirl"
 local m_crouch = require "scripts.player.moveset.m_crouch"
 local m_pound = require "scripts.player.moveset.m_pound"
+local m_poundfly = require "scripts.player.moveset.m_poundfly"
 local m_swim = require "scripts.player.moveset.m_swim"
 
 local c_idle = require "scripts.player.combat.c_idle"
@@ -27,6 +28,7 @@ go.property("twirlForce", 0)
 go.property("twirlTime", 0)
 go.property("poundForce", 0)
 go.property("poundTime", 0)
+go.property("poundFlyDecay", 0)
 
 go.property("speedupTime", 0)
 go.property("speed2", 0)
@@ -50,6 +52,7 @@ function init(self)
 		m_crouch = m_crouch,
 		m_twirl = m_twirl,
 		m_pound = m_pound,
+		m_poundfly = m_poundfly,
 		m_swim = m_swim,
 	}, "m_idle", self.vars, m_transitions)
 
@@ -89,6 +92,7 @@ function on_message(self, message_id, message, sender)
 			self.vars.isGrounded = true
 			self.vars.twirled = false
 			self.vars.pounded = false
+			self.vars.keepX = false
 		elseif message.normal.y < -0.7 and self.vars.velocity.y > 0 then
 			self.vars.velocity.y = 0 --bump
 		end

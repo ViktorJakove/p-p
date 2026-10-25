@@ -3,7 +3,11 @@ local M = {}
 
 function M.enter(vars,from)
 	print("pound")
+	
 	vars.pounded = true
+
+	--vars.keepX = true
+	
 	--vars.isGrounded = false
 	M.timer = 0 
 
@@ -19,7 +23,7 @@ function M.update(vars,dt, fsm)
 	vars.velocity.x = vars.poundDir.x *vars.cfg.poundForce
 	vars.velocity.y = vars.poundDir.y *vars.cfg.poundForce
 
-	if M.timer >= vars.cfg.poundTime then fsm:change("m_fall") end
+	if M.timer >= vars.cfg.poundTime then fsm:change("m_poundfly") end
 end
 
 function M.handle_input(vars, action_id, action, fsm)
@@ -28,8 +32,9 @@ end
 
 function M.exit(vars)
 	vars.pounded = false
+	vars.twirled = false
 	
-	if vars.velocity.y > 0 then vars.velocity.y = 0 end
+	--if vars.velocity.y > 0 then vars.velocity.y = 0 end
 
 	vars.poundDir.x = 0
 	vars.poundDir.y = 0

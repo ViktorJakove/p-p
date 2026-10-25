@@ -15,7 +15,7 @@ function M.apply(vars,dt)
 	end
 	
 	vars.velocity.y = vars.velocity.y - gravVar *dt
-	vars.velocity.x = vars.moveDir * vars.cfg.speed
+	if not vars.keepX then vars.velocity.x = vars.moveDir * vars.cfg.speed end
 end
 
 function M.init_gravity_pushdown(vars)

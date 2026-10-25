@@ -1,4 +1,3 @@
---init fallforce, slowdown rychlejsi
 --jump hold
 --twirl
 --pound

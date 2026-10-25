@@ -19,6 +19,7 @@ go.property("jumpTime",0)
 go.property("jumpForce", 0)
 go.property("gravity", 0)
 go.property("initFallForce", 0)
+go.property("jumpEndPushdown", 0)
 
 go.property("twirlForce", 0)
 go.property("poundForce", 0)

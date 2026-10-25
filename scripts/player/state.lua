@@ -4,10 +4,11 @@ function M.new(props)
 	return{
 		cfg = {
 			speed = props.speed,
-			gravity = props.gravity,
-			initFallForce = props.initFallForce,
 			jumpForce = props.jumpForce,
 			jumpTime = props.jumpTime,
+			gravity = props.gravity,
+			initFallForce = props.initFallForce,
+			jumpEndPushdown = props.jumpEndPushdown,
 			twirlForce = props.twirlForce,
 			poundForce = props.poundForce,
 			speedupTime = props.speedupTime,

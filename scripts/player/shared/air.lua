@@ -6,7 +6,7 @@ function M.apply(vars,dt)
 	
 	local gravVar = vars.cfg.gravity
 	if vars.velocity.y < 200 and vars.velocity.y > -100 then 
-		gravVar = gravVar + 300 
+		gravVar = gravVar + vars.cfg.jumpEndPushdown
 		print("uwu")
 	elseif vars.velocity.y < 0 then
 		print(gravVar)

@@ -18,6 +18,11 @@ function M.new(props)
 			highjumpForce = props.highjumpForce,
 			highjumpUnlockTime = props.highjumpUnlockTime
 		},
+		savedata = {
+			maxHealth = 0,
+			pounds = 0,
+			canSwim = false,
+		},
 		velocity = vmath.vector3(),
 		moveDir = 0,
 		dirKeys = {left = false, right = false},
@@ -26,6 +31,7 @@ function M.new(props)
 		crouchHeld = false,
 		twirled = true,
 		pounded = true,
+		health = 0,
 	}
 end
 

@@ -1,6 +1,7 @@
---twirl
 --pound
 --bounce
 --swim
+--fly
+--kamera
 --coyote time
 --highjump i chvilinku po pusteni crouche?

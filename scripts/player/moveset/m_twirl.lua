@@ -5,6 +5,7 @@ local M = {}
 function M.enter(vars)
 	print("twirl")
 	vars.twirled = true
+	vars.pounded = false
 	--vars.velocity.y = 0
 	M.timer = 0
 end

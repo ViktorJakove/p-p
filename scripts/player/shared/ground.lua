@@ -2,6 +2,11 @@
 local M = {}
 local JUMP = hash("jump")
 
+function M.enter(vars,from)
+	--if from == "m_pound" and (dostatecne brzo) then fsm:change("m_swim") end
+	--anim
+end
+
 function M.try_jump(vars, action_id, action, fsm)
 	if action_id == JUMP and action.pressed then
 		fsm:change("m_jump")

@@ -8,7 +8,7 @@ function M.apply(vars,dt)
 	local gravVar = vars.cfg.gravity
 	if vars.velocity.y < 200 and vars.velocity.y > -200 then 
 		gravVar = gravVar + vars.cfg.jumpEndPushdown
-		print("uwu")
+		--print("uwu")
 	--elseif vars.velocity.y < 0 then
 		--print(gravVar)
 	end

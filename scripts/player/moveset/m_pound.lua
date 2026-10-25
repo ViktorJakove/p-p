@@ -20,10 +20,14 @@ end
 function M.update(vars,dt, fsm)
 	--postupne zpomalit
 	M.timer = M.timer + dt
-
+	
 	if vars.wallNormalX ~= 0 and vars.poundDir.x * vars.wallNormalX < 0 then
-		vars.poundDir.x = -vars.poundDir.x * vars.poundBounceMultiplier
+		vars.poundDir.x = -vars.poundDir.x * vars.cfg.poundBounceMultiplier
 		vars.poundDir = vmath.normalize(vars.poundDir)
+		--vars.velocity.x = vars.poundDir.x *vars.cfg.poundForce
+		--vars.velocity.y = vars.poundDir.y *vars.cfg.poundForce
+		--fsm:change("m_poundfly")
+		return
 	end
 	
 	vars.velocity.x = vars.poundDir.x *vars.cfg.poundForce

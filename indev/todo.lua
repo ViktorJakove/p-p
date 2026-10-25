@@ -1,6 +1,4 @@
---asi zrusit prechod z poundfly do fall
-
---bounce?? ready ale nedari se kolize se zdi???
+--bounce stav
 --crash
 --swim
 --fly

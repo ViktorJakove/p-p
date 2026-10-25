@@ -4,7 +4,8 @@ local M = {}
 function M.enter(vars, from)
 	print("poundfly")
 	vars.keepX = true
-	vars.velocity.x = vars.velocity.x * 0.85
+	vars.velocity.x = vars.velocity.x * 0.75
+	if vars.velocity.y > 0 then vars.velocity.y = vars.velocity.y/2 end
 end
 
 function M.update(vars, dt, fsm)

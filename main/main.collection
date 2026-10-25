@@ -58,7 +58,7 @@ embedded_instances {
   "  }\n"
   "  properties {\n"
   "    id: \"poundBounceMultiplier\"\n"
-  "    value: \"1.5\"\n"
+  "    value: \"3.5\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "  properties {\n"
@@ -232,7 +232,7 @@ embedded_instances {
   "    count: 3\\n"
   "  }\\n"
   "  data: 898.26434\\n"
-  "  data: 192.88437\\n"
+  "  data: 183.46886\\n"
   "  data: 10.0\\n"
   "}\\n"
   "\"\n"
@@ -254,12 +254,12 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 1090.0
-    y: 2539.0
+    x: 1114.0
+    y: 1566.0
   }
   rotation {
-    z: -0.70710677
-    w: 0.70710677
+    z: -0.690033
+    w: 0.7237779
   }
   scale3 {
     x: 2.095179

@@ -18,7 +18,12 @@ embedded_instances {
   "  }\n"
   "  properties {\n"
   "    id: \"gravity\"\n"
-  "    value: \"500.0\"\n"
+  "    value: \"600.0\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"initFallForce\"\n"
+  "    value: \"100.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "  properties {\n"
@@ -90,6 +95,9 @@ embedded_instances {
   position {
     x: 640.0
     y: 360.0
+  }
+  scale3 {
+    y: 1.36737
   }
 }
 embedded_instances {

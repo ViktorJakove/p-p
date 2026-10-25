@@ -1,9 +1,10 @@
 local air = require "scripts.player.shared.air"
 local M = {}
 
-function M.enter(stateVars)
+function M.enter(vars)
 	--anim
 	print("fall")
+	air.init_gravity_pushdown(vars)
 end
 
 function M.update(vars,dt, fsm)

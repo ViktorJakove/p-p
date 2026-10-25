@@ -1,7 +1,8 @@
---highjump i chvilinku po pusteni crouche
---init fallforce
+--init fallforce, slowdown rychlejsi
+--jump hold
 --twirl
 --pound
 --bounce
 --swim
 --coyote time
+--highjump i chvilinku po pusteni crouche?

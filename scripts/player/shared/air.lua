@@ -1,4 +1,4 @@
---sharovany aitbourne stavama (jump, fall...)
+--sharovany airbourne stavama (jump, fall...)
 
 local M = {}
 local JUMP = hash("jump")
@@ -6,11 +6,11 @@ local JUMP = hash("jump")
 function M.apply(vars,dt)
 	
 	local gravVar = vars.cfg.gravity
-	if vars.velocity.y < 200 and vars.velocity.y > -100 then 
+	if vars.velocity.y < 200 and vars.velocity.y > -200 then 
 		gravVar = gravVar + vars.cfg.jumpEndPushdown
 		print("uwu")
-	elseif vars.velocity.y < 0 then
-		print(gravVar)
+	--elseif vars.velocity.y < 0 then
+		--print(gravVar)
 	end
 	
 	vars.velocity.y = vars.velocity.y - gravVar *dt
@@ -28,9 +28,10 @@ function M.try_jump_cut(vars, action_id, action)
 	end
 end
 
-function M.try_twirl(vars, action_id, action)
-	if action_id == JUMP and action.pressed and not vars.isGrounded and not vars.twirled then
-		vars.velocity.y = math.max(vars.cfg.twirlForce, vars.velocity.y + vars.cfg.twirlForce)
+function M.try_twirl(vars, action_id, action,fsm)
+	if action_id == JUMP and action.pressed and not vars.twirled then
+		fsm:change("m_twirl")
+		--vars.velocity.y = math.max(vars.cfg.twirlForce, vars.velocity.y + vars.cfg.twirlForce)
 	end
 end
 

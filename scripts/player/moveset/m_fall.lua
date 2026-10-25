@@ -1,10 +1,10 @@
 local air = require "scripts.player.shared.air"
 local M = {}
 
-function M.enter(vars)
+function M.enter(vars,from)
 	--anim
 	print("fall")
-	air.init_gravity_pushdown(vars)
+	if not from == hash("m_twirl") then air.init_gravity_pushdown(vars) end
 end
 
 function M.update(vars,dt, fsm)
@@ -12,7 +12,7 @@ function M.update(vars,dt, fsm)
 end
 
 function M.handle_input(vars, action_id, action, fsm)
-	air.try_twirl(vars, action_id, action)
+	air.try_twirl(vars, action_id, action,fsm)
 end
 
 function M.exit(vars)

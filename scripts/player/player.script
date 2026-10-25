@@ -22,6 +22,7 @@ go.property("initFallForce", 0)
 go.property("jumpEndPushdown", 0)
 
 go.property("twirlForce", 0)
+go.property("twirlTime", 0)
 go.property("poundForce", 0)
 
 go.property("speedupTime", 0)
@@ -43,7 +44,8 @@ function init(self)
 		m_jump = m_jump,
 		m_highjump = m_highjump,
 		m_fall = m_fall,
-		m_crouch = m_crouch
+		m_crouch = m_crouch,
+		m_twirl = m_twirl
 	}, "m_idle", self.vars, m_transitions)
 
 	self.combat = fsm.new({

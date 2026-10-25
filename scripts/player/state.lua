@@ -24,6 +24,7 @@ function M.new(props)
 		isAttacking = false,
 		crouchHeld = false,
 		twirled = true,
+		pounded = true,
 	}
 end
 

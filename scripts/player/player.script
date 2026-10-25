@@ -80,6 +80,8 @@ function on_message(self, message_id, message, sender)
 		
 		if message.normal.y > 0.7 then
 			self.vars.isGrounded = true
+			self.vars.twirled = false
+			self.vars.pounded = false
 		elseif message.normal.y < -0.7 and self.vars.velocity.y > 0 then
 			self.vars.velocity.y = 0 --bump
 		end

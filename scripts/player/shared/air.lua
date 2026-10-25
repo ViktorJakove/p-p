@@ -28,7 +28,10 @@ function M.try_jump_cut(vars, action_id, action)
 	end
 end
 
-function M.try_twirl(vars,dt)
+function M.try_twirl(vars, action_id, action)
+	if action_id == JUMP and action.pressed and not vars.isGrounded and not vars.twirled then
+		vars.velocity.y = math.max(vars.cfg.twirlForce, vars.velocity.y + vars.cfg.twirlForce)
+	end
 end
 
 function M.try_pound(vars,dt)

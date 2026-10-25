@@ -9,6 +9,8 @@ local m_fall = require "scripts.player.moveset.m_fall"
 local m_idle = require "scripts.player.moveset.m_idle"
 local m_twirl = require "scripts.player.moveset.m_twirl"
 local m_crouch = require "scripts.player.moveset.m_crouch"
+local m_pound = require "scripts.player.moveset.m_pound"
+local m_swim = require "scripts.player.moveset.m_swim"
 
 local c_idle = require "scripts.player.combat.c_idle"
 local c_attack = require "scripts.player.combat.c_attack"
@@ -24,6 +26,7 @@ go.property("jumpEndPushdown", 0)
 go.property("twirlForce", 0)
 go.property("twirlTime", 0)
 go.property("poundForce", 0)
+go.property("poundTime", 0)
 
 go.property("speedupTime", 0)
 go.property("speed2", 0)
@@ -45,7 +48,9 @@ function init(self)
 		m_highjump = m_highjump,
 		m_fall = m_fall,
 		m_crouch = m_crouch,
-		m_twirl = m_twirl
+		m_twirl = m_twirl,
+		m_pound = m_pound,
+		m_swim = m_swim,
 	}, "m_idle", self.vars, m_transitions)
 
 	self.combat = fsm.new({
@@ -98,10 +103,9 @@ function on_input(self, action_id, action)
 
 	local v = self.vars
 
-	if action_id == hash("down") then
-		if action.pressed then v.crouchHeld = true
-		elseif action.released then v.crouchHeld = false end
-	end
+	if action_id == hash("down") then v.crouchHeld = not action.released end
+
+	if action_id == hash("up") then v.upHeld = not action.released end
 	
 	if action_id == hash("right") then 
 		v.dirKeys.right = not action.released

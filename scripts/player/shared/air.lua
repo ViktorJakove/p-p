@@ -2,6 +2,7 @@
 
 local M = {}
 local JUMP = hash("jump")
+local ATTACK = hash("attack")
 
 function M.apply(vars,dt)
 	
@@ -35,7 +36,11 @@ function M.try_twirl(vars, action_id, action,fsm)
 	end
 end
 
-function M.try_pound(vars,dt)
+function M.try_pound(vars, action_id, action,fsm)
+	if action_id == ATTACK and action.pressed and not vars.pounded then 
+		fsm:change("m_pound")
+	end
+	
 end
 
 return M

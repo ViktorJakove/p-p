@@ -14,6 +14,7 @@ end
 
 function M.handle_input(vars, action_id, action, fsm)
 	air.try_twirl(vars, action_id, action,fsm)
+	air.try_pound(vars, action_id, action,fsm)
 end
 
 function M.exit(vars)

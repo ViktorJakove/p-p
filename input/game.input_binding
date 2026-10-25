@@ -66,6 +66,14 @@ key_trigger {
   input: KEY_ESC
   action: "menu"
 }
+key_trigger {
+  input: KEY_X
+  action: "attack"
+}
+key_trigger {
+  input: KEY_LSHIFT
+  action: "attack"
+}
 mouse_trigger {
   input: MOUSE_BUTTON_LEFT
   action: "touch"

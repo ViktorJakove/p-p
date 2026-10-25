@@ -24,6 +24,9 @@ return {
 		{to = "m_idle", when = c.stand_up_idle},
 		{to = "m_run", when = c.stand_up_moving},
 	},
+	m_pound = {
+		{to = "m_swim", when = c.pound_landed},
+	},
 	any = {
 		{to = "m_fall", tag = "grounded", when = c.airborne},
 	},

@@ -7,7 +7,8 @@ function M.moving_on_ground(vars) return vars.isGrounded and vars.moveDir ~= 0 e
 function M.crouching(vars) return vars.isGrounded and vars.crouchHeld end
 function M.stand_up_idle(vars) return not vars.crouchHeld and vars.moveDir == 0 end
 function M.stand_up_moving(vars) return not vars.crouchHeld and vars.moveDir ~= 0 end
-function M.pound_landed(vars) return vars.isGrounded and vars.poundDir.y < 0 end
-function M.drift_over(vars) return vars.velocity.x < 50 and vars.velocity.x > -50 end
+function M.pound_landed(vars) return vars.isGrounded and vars.poundDir.y < 0 and vars.saveData.canSwim == true end
+function M.pound_crashed(vars) return vars.isGrounded and vars.poundDir.y < 0 and vars.saveData.canSwim == false end
+function M.drift_over(vars) return vars.velocity.x < 150 and vars.velocity.x > -150 end
 
 return M

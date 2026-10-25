@@ -26,6 +26,7 @@ return {
 	},
 	m_pound = {
 		{to = "m_swim", when = c.pound_landed},
+		{to = "m_crash", when = c.pound_crashed},
 	},
 	m_poundfly = {
 		{to = "m_fall", when = c.drift_over},

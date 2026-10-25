@@ -14,16 +14,17 @@ function M.new(props)
 			poundForce = props.poundForce,
 			poundTime = props.poundTime,
 			poundFlyDecay = props.poundFlyDecay,
+			poundBounceMultiplier = props.poundBounceMultiplier,
 			speedupTime = props.speedupTime,
 			speed2 = props.speed2,
 			crouchSpeed = props.crouchSpeed,
 			highjumpForce = props.highjumpForce,
 			highjumpUnlockTime = props.highjumpUnlockTime
 		},
-		savedata = {
+		saveData = {
 			maxHealth = 0,
 			pounds = 0,
-			canSwim = false,
+			canSwim = true,
 		},
 		velocity = vmath.vector3(),
 		moveDir = 0,
@@ -36,6 +37,7 @@ function M.new(props)
 		upHeld = false,
 		twirled = true,
 		pounded = true,
+		wallNormalX = 0,
 		health = 0,
 	}
 end

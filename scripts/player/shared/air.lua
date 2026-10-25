@@ -1,6 +1,7 @@
 --sharovany aitbourne stavama (jump, fall...)
 
 local M = {}
+local JUMP = hash("jump")
 
 function M.apply(vars,dt)
 	
@@ -18,6 +19,13 @@ end
 
 function M.init_gravity_pushdown(vars)
 	vars.velocity.y = vars.velocity.y - vars.cfg.initFallForce
+end
+
+function M.try_jump_cut(vars, action_id, action)
+	--zpomaleni po releasu
+	if action_id == JUMP and action.released and vars.velocity.y > 0 then
+		vars.velocity.y = vars.velocity.y * 0.33
+	end
 end
 
 function M.try_twirl(vars,dt)

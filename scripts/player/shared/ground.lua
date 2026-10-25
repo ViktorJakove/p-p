@@ -9,8 +9,10 @@ function M.try_jump(vars, action_id, action, fsm)
 end
 
 function M.try_highjump(vars, action_id, action, fsm, crouchTimer)
-	if action_id == JUMP and action.pressed and crouchTimer > vars.cfg.highjumpUnlockTime then
-		fsm:change("m_highjump")
+	if action_id == JUMP and action.pressed then
+		if crouchTimer > vars.cfg.highjumpUnlockTime then
+			fsm:change("m_highjump")
+		else fsm:change("m_jump") end
 	end
 end
 

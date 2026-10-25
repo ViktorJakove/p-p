@@ -38,7 +38,7 @@ embedded_instances {
   "  }\n"
   "  properties {\n"
   "    id: \"highjumpForce\"\n"
-  "    value: \"1000.0\"\n"
+  "    value: \"800.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "  properties {\n"

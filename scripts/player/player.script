@@ -103,7 +103,7 @@ function on_message(self, message_id, message, sender)
 			self.vars.wallNormal.x = message.normal.x
 			self.vars.wallNormal.y = message.normal.y
 
-			if message.normal.y < -0.7 and self.vars.velocity.y > 0 then
+			if message.normal.y < -0.7 and self.vars.velocity.y > 0 and self.mov.current ~= "m_pound" and self.mov.current ~= "m_bounce" then
 				self.vars.velocity.y = 0 --bump
 			end
 		end

@@ -1,4 +1,3 @@
---bounce stav
 --crash
 --swim
 --fly

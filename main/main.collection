@@ -136,9 +136,6 @@ embedded_instances {
     x: 640.0
     y: 360.0
   }
-  scale3 {
-    y: 1.36737
-  }
 }
 embedded_instances {
   id: "sprite"
@@ -206,11 +203,11 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: -689.0
+    x: -402.0
     y: 927.0
   }
   scale3 {
-    x: 2.095179
+    x: 2.938583
   }
 }
 embedded_instances {
@@ -259,8 +256,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 1609.0
-    y: 481.0
+    x: 1601.0
+    y: 1063.0
   }
   rotation {
     z: -0.9490037
@@ -316,8 +313,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 2319.0
-    y: 1582.0
+    x: 2183.0
+    y: 2539.0
   }
   rotation {
     z: -0.690033

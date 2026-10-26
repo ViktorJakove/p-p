@@ -1,3 +1,4 @@
+local ground = require("scripts.player.shared.ground")
 local M = {}
 
 local waitTime = 0
@@ -16,6 +17,8 @@ function M.update(vars,dt, fsm)
 	M.timer = M.timer + dt
 	if M.timer > waitTime then fsm:change("m_idle") end
 	--dojezd
+	--pridat transition z crashe do fall
+	ground.stick(vars)
 end
 
 return M

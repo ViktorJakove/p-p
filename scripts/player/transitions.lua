@@ -29,8 +29,10 @@ return {
 		{to = "m_crash", when = c.pound_crashed},
 	},
 	m_poundfly = {
-		{to = "m_crash", when = c.pound_landed},
-		{to = "m_crash", when = c.pound_crashed},
+		{to = "m_crash", when = c.grounded},
+	},
+	m_bounce = {
+		{to = "m_crash", when = c.grounded},
 	},
 	any = {
 		{to = "m_fall", tag = "grounded", when = c.airborne},

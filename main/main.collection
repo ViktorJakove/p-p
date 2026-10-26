@@ -58,7 +58,7 @@ embedded_instances {
   "  }\n"
   "  properties {\n"
   "    id: \"poundBounceMultiplier\"\n"
-  "    value: \"3.5\"\n"
+  "    value: \"2.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "  properties {\n"
@@ -256,6 +256,63 @@ embedded_instances {
   position {
     x: 1114.0
     y: 1566.0
+  }
+  rotation {
+    z: -0.690033
+    w: 0.7237779
+  }
+  scale3 {
+    x: 2.095179
+  }
+}
+embedded_instances {
+  id: "ground2"
+  data: "embedded_components {\n"
+  "  id: \"collisionobject\"\n"
+  "  type: \"collisionobject\"\n"
+  "  data: \"type: COLLISION_OBJECT_TYPE_STATIC\\n"
+  "mass: 0.0\\n"
+  "friction: 0.1\\n"
+  "restitution: 0.5\\n"
+  "group: \\\"ground\\\"\\n"
+  "mask: \\\"player\\\"\\n"
+  "embedded_collision_shape {\\n"
+  "  shapes {\\n"
+  "    shape_type: TYPE_BOX\\n"
+  "    position {\\n"
+  "      x: 689.0\\n"
+  "      y: -1008.0\\n"
+  "    }\\n"
+  "    rotation {\\n"
+  "    }\\n"
+  "    index: 0\\n"
+  "    count: 3\\n"
+  "  }\\n"
+  "  data: 898.26434\\n"
+  "  data: 183.46886\\n"
+  "  data: 10.0\\n"
+  "}\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"sprite\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"default_animation: \\\"anim\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "size {\\n"
+  "  x: 32.0\\n"
+  "  y: 32.0\\n"
+  "}\\n"
+  "textures {\\n"
+  "  sampler: \\\"texture_sampler\\\"\\n"
+  "  texture: \\\"/builtins/graphics/particle_blob.tilesource\\\"\\n"
+  "}\\n"
+  "\"\n"
+  "}\n"
+  ""
+  position {
+    x: 2319.0
+    y: 1582.0
   }
   rotation {
     z: -0.690033

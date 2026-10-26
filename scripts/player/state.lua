@@ -30,6 +30,7 @@ function M.new(props)
 		moveDir = 0,
 		dirKeys = {left = false, right = false},
 		poundDir = vmath.vector3(),
+		bounceDir = vmath.vector3(),
 		keepX = false,
 		isGrounded = false,
 		isAttacking = false,

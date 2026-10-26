@@ -11,6 +11,7 @@ local m_twirl = require "scripts.player.moveset.m_twirl"
 local m_crouch = require "scripts.player.moveset.m_crouch"
 local m_pound = require "scripts.player.moveset.m_pound"
 local m_poundfly = require "scripts.player.moveset.m_poundfly"
+local m_bounce = require "scripts.player.moveset.m_bounce"
 local m_crash = require "scripts.player.moveset.m_crash"
 local m_swim = require "scripts.player.moveset.m_swim"
 
@@ -55,6 +56,7 @@ function init(self)
 		m_twirl = m_twirl,
 		m_pound = m_pound,
 		m_poundfly = m_poundfly,
+		m_bounce = m_bounce,
 		m_crash = m_crash,
 		m_swim = m_swim,
 	}, "m_idle", self.vars, m_transitions)

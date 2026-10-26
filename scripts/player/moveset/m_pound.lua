@@ -24,9 +24,7 @@ function M.update(vars,dt, fsm)
 	if vars.wallNormalX ~= 0 and vars.poundDir.x * vars.wallNormalX < 0 then
 		vars.poundDir.x = -vars.poundDir.x * vars.cfg.poundBounceMultiplier
 		vars.poundDir = vmath.normalize(vars.poundDir)
-		--vars.velocity.x = vars.poundDir.x *vars.cfg.poundForce
-		--vars.velocity.y = vars.poundDir.y *vars.cfg.poundForce
-		--fsm:change("m_poundfly")
+		fsm:change("m_bounce")
 		return
 	end
 	

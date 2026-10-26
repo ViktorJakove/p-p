@@ -18,12 +18,10 @@ function M.enter(vars,from)
 end
 
 function M.update(vars,dt, fsm)
-	--postupne zpomalit
 	M.timer = M.timer + dt
 	
-	if vars.wallNormalX ~= 0 and vars.poundDir.x * vars.wallNormalX < 0 then
-		vars.poundDir.x = -vars.poundDir.x * vars.cfg.poundBounceMultiplier
-		vars.poundDir = vmath.normalize(vars.poundDir)
+	local nx, ny = vars.wallNormal.x, vars.wallNormal.y
+	if (nx ~= 0 or ny ~= 0) and (vars.poundDir.x * nx + vars.poundDir.y * ny) < 0 then
 		fsm:change("m_bounce")
 		return
 	end

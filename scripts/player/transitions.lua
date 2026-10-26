@@ -32,7 +32,7 @@ return {
 		{to = "m_crash", when = c.grounded},
 	},
 	m_bounce = {
-		{to = "m_crash", when = c.grounded},
+		{to = "m_crash", when = c.landed_flat},
 	},
 	any = {
 		{to = "m_fall", tag = "grounded", when = c.airborne},

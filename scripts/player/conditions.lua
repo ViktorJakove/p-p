@@ -10,6 +10,7 @@ function M.stand_up_idle(vars) return not vars.crouchHeld and vars.moveDir == 0 
 function M.stand_up_moving(vars) return not vars.crouchHeld and vars.moveDir ~= 0 end
 function M.pound_landed(vars) return vars.isGrounded and vars.saveData.canSwim == true end
 function M.pound_crashed(vars) return vars.isGrounded and vars.saveData.canSwim == false end
+function M.landed_flat(vars)return vars.isGrounded and vars.wallNormal.x == 0 and vars.wallNormal.y == 0 end
 --function M.drift_over(vars) return vars.velocity.x < 150 and vars.velocity.x > -150 end
 
 return M

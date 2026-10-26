@@ -38,7 +38,7 @@ function M.new(props)
 		upHeld = false,
 		twirled = true,
 		pounded = true,
-		wallNormalX = 0,
+		wallNormal = vmath.vector3(),
 		health = 0,
 	}
 end

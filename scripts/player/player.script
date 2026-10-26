@@ -20,7 +20,6 @@ local c_attack = require "scripts.player.combat.c_attack"
 local c_leap = require "scripts.player.combat.c_leap"
 
 go.property("speed", 0)
-go.property("jumpTime",0)
 go.property("jumpForce", 0)
 go.property("gravity", 0)
 go.property("initFallForce", 0)
@@ -32,6 +31,8 @@ go.property("poundForce", 0)
 go.property("poundTime", 0)
 go.property("poundFlyDecay", 0)
 go.property("poundBounceMultiplier", 0)
+
+go.property("crashTime", 0)
 
 go.property("speedupTime", 0)
 go.property("speed2", 0)

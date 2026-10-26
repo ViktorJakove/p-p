@@ -5,7 +5,6 @@ function M.new(props)
 		cfg = {
 			speed = props.speed,
 			jumpForce = props.jumpForce,
-			jumpTime = props.jumpTime,
 			gravity = props.gravity,
 			initFallForce = props.initFallForce,
 			jumpEndPushdown = props.jumpEndPushdown,
@@ -15,6 +14,7 @@ function M.new(props)
 			poundTime = props.poundTime,
 			poundFlyDecay = props.poundFlyDecay,
 			poundBounceMultiplier = props.poundBounceMultiplier,
+			crashTime = props.crashTime,
 			speedupTime = props.speedupTime,
 			speed2 = props.speed2,
 			crouchSpeed = props.crouchSpeed,
@@ -31,6 +31,7 @@ function M.new(props)
 		dirKeys = {left = false, right = false},
 		poundDir = vmath.vector3(),
 		bounceDir = vmath.vector3(),
+		crashSpeed = 0,
 		keepX = false,
 		isGrounded = false,
 		isAttacking = false,

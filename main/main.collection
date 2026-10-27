@@ -38,7 +38,7 @@ embedded_instances {
   "  }\n"
   "  properties {\n"
   "    id: \"twirlDelay\"\n"
-  "    value: \"0.5\"\n"
+  "    value: \"0.335\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "  properties {\n"

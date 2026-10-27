@@ -34,6 +34,12 @@ return {
 	m_bounce = {
 		{to = "m_crash", when = c.landed_flat},
 	},
+	m_swim = {
+		{to = "m_swimfly", when = c.airborne},
+	},
+	m_swimfly = {
+		{to = "m_swim", when = c.grounded},
+	},
 	any = {
 		{to = "m_fall", tag = "grounded", when = c.airborne},
 	},

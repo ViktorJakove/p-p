@@ -1,4 +1,5 @@
 --sharovany grounded stavama (idle, run,...)
+local air = require("scripts.player.shared.air")
 local M = {}
 local JUMP = hash("jump")
 
@@ -23,6 +24,10 @@ end
 
 function M.stick(vars)
 	vars.velocity.y = -10
+end
+
+function M.noControl(vars,dt)
+	if vars.isGrounded then M.stick(vars)else air.apply(vars, dt)end
 end
 
 return M

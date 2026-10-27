@@ -25,8 +25,8 @@ go.property("gravity", 0)
 go.property("initFallForce", 0)
 go.property("jumpEndPushdown", 0)
 
-go.property("twirlForce", 0)
 go.property("twirlTime", 0)
+go.property("twirlDelay", 0)
 go.property("poundForce", 0)
 go.property("poundTime", 0)
 go.property("poundFlyDecay", 0)
@@ -71,9 +71,13 @@ function init(self)
 
 	self.correction = vmath.vector3()
 end
-
+	
 function update(self, dt)
-
+	local v = self.vars
+	if v.twirlCooldown > 0 then
+		v.twirlCooldown = v.twirlCooldown - dt
+	end 
+	
 	self.mov:update(dt)
 	self.combat:update(dt)
 	
@@ -98,7 +102,7 @@ function on_message(self, message_id, message, sender)
 		
 		if message.normal.y >= FLOOR_MIN_NY then
 			self.vars.isGrounded = true
-			self.vars.twirled = false
+			self.vars.twirlCooldown = 0
 			self.vars.pounded = false
 		else
 			self.vars.wallNormal.x = message.normal.x
@@ -108,7 +112,8 @@ function on_message(self, message_id, message, sender)
 				self.vars.velocity.y = 0 --bump
 			end
 		end
-
+		
+		-- zbytecny??
 		if math.abs(message.normal.x) > 0.7 then
 			self.vars.wallNormal.x = message.normal.x
 			self.vars.wallNormal.y = message.normal.y

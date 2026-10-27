@@ -8,8 +8,8 @@ function M.new(props)
 			gravity = props.gravity,
 			initFallForce = props.initFallForce,
 			jumpEndPushdown = props.jumpEndPushdown,
-			twirlForce = props.twirlForce,
 			twirlTime = props.twirlTime,
+			twirlDelay = props.twirlDelay,
 			poundForce = props.poundForce,
 			poundTime = props.poundTime,
 			poundFlyDecay = props.poundFlyDecay,
@@ -37,9 +37,9 @@ function M.new(props)
 		isAttacking = false,
 		crouchHeld = false,
 		upHeld = false,
-		twirled = true,
 		pounded = true,
 		wallNormal = vmath.vector3(),
+		twirlCooldown = 0,
 		health = 0,
 	}
 end

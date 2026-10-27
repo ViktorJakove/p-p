@@ -9,9 +9,6 @@ function M.apply(vars,dt)
 	local gravVar = vars.cfg.gravity
 	if vars.velocity.y < 200 and vars.velocity.y > -200 then 
 		gravVar = gravVar + vars.cfg.jumpEndPushdown
-		--print("uwu")
-	--elseif vars.velocity.y < 0 then
-		--print(gravVar)
 	end
 	
 	vars.velocity.y = vars.velocity.y - gravVar *dt
@@ -30,9 +27,8 @@ function M.try_jump_cut(vars, action_id, action)
 end
 
 function M.try_twirl(vars, action_id, action,fsm)
-	if action_id == JUMP and action.pressed and not vars.twirled then
+	if action_id == JUMP and action.pressed and vars.twirlCooldown <= 0 then
 		fsm:change("m_twirl")
-		--vars.velocity.y = math.max(vars.cfg.twirlForce, vars.velocity.y + vars.cfg.twirlForce)
 	end
 end
 

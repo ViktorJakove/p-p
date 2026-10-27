@@ -3,12 +3,8 @@ local M = {}
 
 function M.enter(vars,from)
 	print("pound")
-	
 	vars.pounded = true
-
-	--vars.keepX = true
-	
-	--vars.isGrounded = false
+	vars.twirlCooldown = 0
 	M.timer = 0 
 
 	local y = (vars.upHeld and 1 or 0) - (vars.crouchHeld and 1 or 0)

@@ -34,9 +34,6 @@ return {
 	m_bounce = {
 		{to = "m_crash", when = c.landed_flat},
 	},
-	m_crash = {
-		{to = "m_fall", when = c.airborne},
-	},
 	any = {
 		{to = "m_fall", tag = "grounded", when = c.airborne},
 	},

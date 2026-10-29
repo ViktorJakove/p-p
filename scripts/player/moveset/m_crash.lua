@@ -27,7 +27,7 @@ function M.update(vars,dt, fsm)
 	ground.noControl(vars, dt)
 end
 
-function M.esit(vars,from)
+function M.exit(vars,from)
 	vars.keepX = false
 end
 return M

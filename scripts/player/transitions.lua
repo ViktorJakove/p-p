@@ -35,6 +35,7 @@ return {
 		{to = "m_crash", when = c.landed_flat},
 	},
 	m_swim = {
+		{to = "m_crash", when = c.hit_wall},
 		{to = "m_swimfly", when = c.airborne},
 	},
 	m_swimfly = {

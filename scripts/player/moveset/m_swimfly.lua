@@ -5,7 +5,7 @@ function M.enter(vars, from)
 	print("šipkaa")
 	vars.keepX = true
 	vars.cfg.gravity = vars.cfg.gravity*3/4
-	vars.velocity.x = vars.velocity.x * 1.3
+	vars.velocity.x = vars.velocity.x * 1.2
 	vars.velocity.y = vars.velocity.y + 500
 end
 

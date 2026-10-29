@@ -1,6 +1,8 @@
 --swim
 --fly
 
+--textsys
+
 --kamera
 ----move
 ----pri dashi pomalejsi, pak dozene

@@ -15,7 +15,7 @@ end
 function M.enter(vars,from)
 	print("swim")
 	vars.keepX = true
-	vars.velocity.x = M.sign(vars.velocity.x) * vars.cfg.poundForce * 1.3
+	vars.velocity.x = M.sign(vars.velocity.x) * vars.cfg.poundForce * 1.2
 end
 
 function M.update(vars,dt, fsm)

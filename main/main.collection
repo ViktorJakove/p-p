@@ -2,7 +2,7 @@ name: "main"
 scale_along_z: 0
 embedded_instances {
   id: "player"
-  children: "sprite"
+  children: "groundspr"
   data: "components {\n"
   "  id: \"movement\"\n"
   "  component: \"/scripts/player/player.script\"\n"
@@ -102,21 +102,13 @@ embedded_instances {
   "    count: 3\\n"
   "    id: \\\"feet\\\"\\n"
   "  }\\n"
-  "  data: 642.4904\\n"
-  "  data: 362.44186\\n"
+  "  data: 24.995466\\n"
+  "  data: 47.716984\\n"
   "  data: 10.0\\n"
   "}\\n"
   "\"\n"
   "}\n"
   ""
-  position {
-    x: 640.0
-    y: 527.0
-  }
-  scale3 {
-    x: 0.261905
-    y: 0.38961
-  }
 }
 embedded_instances {
   id: "camera"
@@ -132,13 +124,9 @@ embedded_instances {
   "\"\n"
   "}\n"
   ""
-  position {
-    x: 640.0
-    y: 360.0
-  }
 }
 embedded_instances {
-  id: "sprite"
+  id: "groundspr"
   data: "embedded_components {\n"
   "  id: \"label\"\n"
   "  type: \"label\"\n"
@@ -151,18 +139,15 @@ embedded_instances {
   "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
   "\"\n"
   "  scale {\n"
-  "    x: 35.2\n"
-  "    y: 46.8\n"
+  "    x: 1.360001\n"
+  "    y: 9.439999\n"
   "  }\n"
   "}\n"
   ""
 }
 embedded_instances {
-  id: "go"
-  data: ""
-}
-embedded_instances {
-  id: "ground"
+  id: "go1"
+  children: "sprite"
   data: "embedded_components {\n"
   "  id: \"collisionobject\"\n"
   "  type: \"collisionobject\"\n"
@@ -176,151 +161,40 @@ embedded_instances {
   "  shapes {\\n"
   "    shape_type: TYPE_BOX\\n"
   "    position {\\n"
-  "      x: 689.0\\n"
-  "      y: -1008.0\\n"
   "    }\\n"
   "    rotation {\\n"
   "    }\\n"
   "    index: 0\\n"
   "    count: 3\\n"
   "  }\\n"
-  "  data: 898.26434\\n"
-  "  data: 183.46886\\n"
+  "  data: 471.21793\\n"
+  "  data: 45.491535\\n"
   "  data: 10.0\\n"
-  "}\\n"
-  "\"\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"sprite\"\n"
-  "  type: \"sprite\"\n"
-  "  data: \"default_animation: \\\"anim\\\"\\n"
-  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
-  "textures {\\n"
-  "  sampler: \\\"texture_sampler\\\"\\n"
-  "  texture: \\\"/builtins/graphics/particle_blob.tilesource\\\"\\n"
   "}\\n"
   "\"\n"
   "}\n"
   ""
   position {
-    x: 579.0
-    y: 927.0
-  }
-  scale3 {
-    x: 2.938583
+    y: -255.0
   }
 }
 embedded_instances {
-  id: "ground1"
+  id: "sprite"
   data: "embedded_components {\n"
-  "  id: \"collisionobject\"\n"
-  "  type: \"collisionobject\"\n"
-  "  data: \"type: COLLISION_OBJECT_TYPE_STATIC\\n"
-  "mass: 0.0\\n"
-  "friction: 0.1\\n"
-  "restitution: 0.5\\n"
-  "group: \\\"ground\\\"\\n"
-  "mask: \\\"player\\\"\\n"
-  "embedded_collision_shape {\\n"
-  "  shapes {\\n"
-  "    shape_type: TYPE_BOX\\n"
-  "    position {\\n"
-  "      x: 689.0\\n"
-  "      y: -1008.0\\n"
-  "    }\\n"
-  "    rotation {\\n"
-  "    }\\n"
-  "    index: 0\\n"
-  "    count: 3\\n"
-  "  }\\n"
-  "  data: 898.26434\\n"
-  "  data: 183.46886\\n"
-  "  data: 10.0\\n"
-  "}\\n"
-  "\"\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"sprite\"\n"
-  "  type: \"sprite\"\n"
-  "  data: \"default_animation: \\\"anim\\\"\\n"
-  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
-  "size {\\n"
-  "  x: 32.0\\n"
+  "  id: \"label\"\n"
+  "  type: \"label\"\n"
+  "  data: \"size {\\n"
+  "  x: 128.0\\n"
   "  y: 32.0\\n"
   "}\\n"
-  "textures {\\n"
-  "  sampler: \\\"texture_sampler\\\"\\n"
-  "  texture: \\\"/builtins/graphics/particle_blob.tilesource\\\"\\n"
-  "}\\n"
+  "text: \\\"Label\\\"\\n"
+  "font: \\\"/builtins/fonts/default.font\\\"\\n"
+  "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
   "\"\n"
   "}\n"
   ""
-  position {
-    x: 1601.0
-    y: 1063.0
-  }
-  rotation {
-    z: -0.9490037
-    w: 0.3152649
-  }
   scale3 {
-    x: 2.095179
-  }
-}
-embedded_instances {
-  id: "ground2"
-  data: "embedded_components {\n"
-  "  id: \"collisionobject\"\n"
-  "  type: \"collisionobject\"\n"
-  "  data: \"type: COLLISION_OBJECT_TYPE_STATIC\\n"
-  "mass: 0.0\\n"
-  "friction: 0.1\\n"
-  "restitution: 0.5\\n"
-  "group: \\\"ground\\\"\\n"
-  "mask: \\\"player\\\"\\n"
-  "embedded_collision_shape {\\n"
-  "  shapes {\\n"
-  "    shape_type: TYPE_BOX\\n"
-  "    position {\\n"
-  "      x: 689.0\\n"
-  "      y: -1008.0\\n"
-  "    }\\n"
-  "    rotation {\\n"
-  "    }\\n"
-  "    index: 0\\n"
-  "    count: 3\\n"
-  "  }\\n"
-  "  data: 898.26434\\n"
-  "  data: 183.46886\\n"
-  "  data: 10.0\\n"
-  "}\\n"
-  "\"\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"sprite\"\n"
-  "  type: \"sprite\"\n"
-  "  data: \"default_animation: \\\"anim\\\"\\n"
-  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
-  "size {\\n"
-  "  x: 32.0\\n"
-  "  y: 32.0\\n"
-  "}\\n"
-  "textures {\\n"
-  "  sampler: \\\"texture_sampler\\\"\\n"
-  "  texture: \\\"/builtins/graphics/particle_blob.tilesource\\\"\\n"
-  "}\\n"
-  "\"\n"
-  "}\n"
-  ""
-  position {
-    x: 2183.0
-    y: 1757.0
-  }
-  rotation {
-    z: -0.690033
-    w: 0.7237779
-  }
-  scale3 {
-    x: 2.095179
+    x: 24.891563
+    y: 8.425092
   }
 }

@@ -1,13 +1,12 @@
---swim
 --fly
 
---textsys
-
 --kamera
-----move
+----move - BOUNDARIES
 ----pri dashi pomalejsi, pak dozene
 ----screenchange
 ----screen shake (bounce, crash)
+
+--textsys
 
 --feel
 ----coyote time

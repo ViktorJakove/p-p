@@ -1,56 +1,51 @@
+go.property("target", msg.url("/player"))
+
+go.property("maxSpeed", 0)
+go.property("lag",0)
+go.property("maxLag",0)
+go.property("lagSpeed",0)
+go.property("catchupSpeed",0)
+
 function init(self)
-	-- Add initialization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+	self.prev = go.get_world_position(self.target)
+	self.offset = vmath.vector3()
+	self.z = go.get_position().z
+
+	local p = vmath.vector3(self.prev)
+	p.z = self.z
+	go.set_position(p)
 end
 
-function final(self)
-	-- Add finalization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+function damp(k,dt)
+	return 1 - math.exp(-k * dt)
 end
 
 function update(self, dt)
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
+	if dt <= 0 then return end
 
-function late_update(self, dt)
-	-- This function is called at the end of update cycle but before render
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
+	local pos = go.get_world_position(self.target)
+	local vel = (pos-self.prev)/dt
+	self.prev = pos
 
-function fixed_update(self, dt)
-	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
-	-- Can be coupled with fixed updates of the physics simulation if 'Use Fixed Timestep' is enabled in
-	-- Physics section of game.project
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
+	local speed = vmath.length(vel)
 
-function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
-end
+	local desired = vmath.vector3()
+	if speed > self.maxSpeed then
+		local lag = math.min(self.maxLag, (speed - self.maxSpeed) *self.lag)
+		desired = -(vel/speed) * lag
+	end
 
-function on_input(self, action_id, action)
-	-- Add input-handling code here. The game object this script is attached to
-	-- must have acquired input focus:
-	--
-	--    msg.post(".", "acquire_input_focus")
-	--
-	-- All mapped input bindings will be received. Mouse and touch input will
-	-- be received regardless of where on the screen it happened.
-	-- Learn more: https://defold.com/manuals/input/
-	-- Remove this function if not needed
-end
+	local growing = vmath.length(desired) > vmath.length(self.offset)
+	local k = growing and self.lagSpeed or self.catchupSpeed
+	self.offset = self.offset + (desired - self.offset) *damp(k, dt)
 
-function on_reload(self)
-	-- Add reload-handling code here
-	-- Learn more: https://defold.com/manuals/hot-reload/
-	-- Remove this function if not needed
+	local len = vmath.length(self.offset)
+	if len > self.maxLag then
+		self.offset = self.offset * (self.maxLag /len)
+	end
+
+	
+	local cam = pos + self.offset
+	cam.z = self.z
+	go.set_position(cam)
 end

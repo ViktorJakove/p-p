@@ -27,6 +27,11 @@ local function damp(k,dt)
 	return 1 - math.exp(-k * dt)
 end
 
+local maxMult = 1
+for _, m in pairs(cameraState.lagStates) do
+	maxMult = math.max(maxMult, math.abs(m))
+end
+
 function update(self, dt)
 	if dt <= 0 then return end
 
@@ -38,11 +43,12 @@ function update(self, dt)
 	self.base.y = self.base.y + (pos.y - self.base.y) * damp(self.follow_speed_y, dt)
 	
 	local desired = vmath.vector3()
-	if cameraState.lagStates[cameraState.state] then
+	local multiplicator = cameraState.lagStates[cameraState.state]
+	if multiplicator then
 		local speed = vmath.length(vel)
 		if speed > 50 then
 			local dir = vel / speed
-			desired = vmath.vector3(-dir.x * self.maxLagX, -dir.y * self.maxLagY, 0)
+			desired = vmath.vector3(-dir.x *multiplicator *self.maxLagX, -dir.y *multiplicator* self.maxLagY, 0)
 		end
 	end
 
@@ -50,8 +56,10 @@ function update(self, dt)
 	local k = growing and self.lagSpeed or self.catchupSpeed
 	self.offset = self.offset + (desired - self.offset) *damp(k, dt)
 
-	self.offset.x = math.max(-self.maxLagX, math.min(self.maxLagX, self.offset.x))
-	self.offset.y = math.max(-self.maxLagY, math.min(self.maxLagY, self.offset.y))
+	local limX = self.maxLagX * maxMult
+	local limY = self.maxLagY * maxMult
+	self.offset.x = math.max(-limX, math.min(limX, self.offset.x))
+	self.offset.y = math.max(-limY, math.min(limY, self.offset.y))
 
 	local cam = self.base + self.offset
 	cam.z = self.z

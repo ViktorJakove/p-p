@@ -6,17 +6,23 @@ go.property("maxLag",0)
 go.property("lagSpeed",0)
 go.property("catchupSpeed",0)
 
+go.property("follow_speed_x", 30)
+go.property("follow_speed_y", 12)
+
 function init(self)
-	self.prev = go.get_world_position(self.target)
+	local p = go.get_world_position(self.target)
+	self.prev = p
+	self.base = vmath.vector3(p)
 	self.offset = vmath.vector3()
 	self.z = go.get_position().z
 
-	local p = vmath.vector3(self.prev)
-	p.z = self.z
-	go.set_position(p)
+
+	local c = vmath.vector3(p)
+	c.z = self.z
+	go.set_position(c)
 end
 
-function damp(k,dt)
+local function damp(k,dt)
 	return 1 - math.exp(-k * dt)
 end
 
@@ -26,6 +32,9 @@ function update(self, dt)
 	local pos = go.get_world_position(self.target)
 	local vel = (pos-self.prev)/dt
 	self.prev = pos
+
+	self.base.x = self.base.x + (pos.x - self.base.x) * damp(self.follow_speed_x, dt)
+	self.base.y = self.base.y + (pos.y - self.base.y) * damp(self.follow_speed_y, dt)
 
 	local speed = vmath.length(vel)
 

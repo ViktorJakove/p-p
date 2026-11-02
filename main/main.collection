@@ -116,8 +116,18 @@ embedded_instances {
   "  id: \"camera1\"\n"
   "  component: \"/scripts/camera/camera.script\"\n"
   "  properties {\n"
-  "    id: \"maxSpeed\"\n"
-  "    value: \"500.0\"\n"
+  "    id: \"maxSpeedX\"\n"
+  "    value: \"490.0\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"maxSpeedUp\"\n"
+  "    value: \"490.0\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"maxSpeedDown\"\n"
+  "    value: \"900.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "  properties {\n"
@@ -126,7 +136,12 @@ embedded_instances {
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "  properties {\n"
-  "    id: \"maxLag\"\n"
+  "    id: \"maxLagX\"\n"
+  "    value: \"200.0\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"maxLagY\"\n"
   "    value: \"200.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
@@ -137,7 +152,17 @@ embedded_instances {
   "  }\n"
   "  properties {\n"
   "    id: \"catchupSpeed\"\n"
-  "    value: \"5.0\"\n"
+  "    value: \"4.0\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"follow_speed_x\"\n"
+  "    value: \"30.0\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"follow_speed_y\"\n"
+  "    value: \"12.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "}\n"
@@ -204,7 +229,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: -250.0
+    x: -1265.0
     y: -58.0
   }
   rotation {
@@ -254,7 +279,7 @@ embedded_instances {
   "    index: 0\\n"
   "    count: 3\\n"
   "  }\\n"
-  "  data: 212.84941\\n"
+  "  data: 835.4959\\n"
   "  data: 45.491535\\n"
   "  data: 10.0\\n"
   "}\\n"
@@ -262,6 +287,7 @@ embedded_instances {
   "}\n"
   ""
   position {
+    x: -378.0
     y: -255.0
   }
 }
@@ -281,7 +307,7 @@ embedded_instances {
   "}\n"
   ""
   scale3 {
-    x: 12.056778
+    x: 46.631668
     y: 8.425092
   }
 }

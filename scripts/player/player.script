@@ -1,5 +1,6 @@
 local fsm = require "scripts.player.fsm"
 local state = require "scripts.player.state"
+local cameraState = require("scripts.camera.camera_state")
 
 local m_transitions = require "scripts.player.transitions"
 local m_run = require "scripts.player.moveset.m_run"
@@ -78,12 +79,12 @@ function update(self, dt)
 	local v = self.vars
 	if v.twirlCooldown > 0 then
 		v.twirlCooldown = v.twirlCooldown - dt
-	end 
-
-	print(v.keepX)
+	end
 	
 	self.mov:update(dt)
 	self.combat:update(dt)
+
+	cameraState.state = self.mov.current
 	
 	go.set_position(go.get_position() + self.vars.velocity *dt)
 
@@ -115,7 +116,6 @@ function on_message(self, message_id, message, sender)
 			if message.normal.y < -0.7 and self.vars.velocity.y > 0 and self.mov.current ~= "m_pound" and self.mov.current ~= "m_bounce" then
 				self.vars.velocity.y = 0 --bump
 			end
-			--if self.mov.current == "m_swim" then fsm:change("m_crash") end
 		end
 		
 		-- zbytecny??

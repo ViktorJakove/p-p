@@ -27,11 +27,6 @@ local function damp(k,dt)
 	return 1 - math.exp(-k * dt)
 end
 
-local maxMult = 1
-for _, m in pairs(cameraState.lagStates) do
-	maxMult = math.max(maxMult, math.abs(m))
-end
-
 function update(self, dt)
 	if dt <= 0 then return end
 
@@ -55,11 +50,6 @@ function update(self, dt)
 	local growing = vmath.length(desired) > vmath.length(self.offset)
 	local k = growing and self.lagSpeed or self.catchupSpeed
 	self.offset = self.offset + (desired - self.offset) *damp(k, dt)
-
-	local limX = self.maxLagX * maxMult
-	local limY = self.maxLagY * maxMult
-	self.offset.x = math.max(-limX, math.min(limX, self.offset.x))
-	self.offset.y = math.max(-limY, math.min(limY, self.offset.y))
 
 	local cam = self.base + self.offset
 	cam.z = self.z

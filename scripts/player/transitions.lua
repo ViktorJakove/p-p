@@ -39,6 +39,7 @@ return {
 		{to = "m_swimfly", when = c.airborne},
 	},
 	m_swimfly = {
+		{to = "m_crash", when = c.hit_wall},
 		{to = "m_swim", when = c.grounded},
 	},
 	any = {

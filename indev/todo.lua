@@ -1,5 +1,9 @@
 --fly
 
+--pokud jump ze swimu stejnou stranou tak speed stejnej jako swimspeed
+-----  kontroluje jestli se moveDir rovná facing když ne tak speed.resetSpeed
+---  boostDir ve stavu
+
 --kamera
 ---- BOUNDARIES
 ----screenchange- stoptime (bounce, pound)

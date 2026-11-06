@@ -1,6 +1,7 @@
 local fsm = require "scripts.player.fsm"
 local state = require "scripts.player.state"
-local cameraState = require("scripts.camera.camera_state")
+local cameraState = require"scripts.camera.camera_state"
+local speed = require"scripts.player.shared.speed"
 
 local m_transitions = require "scripts.player.transitions"
 local m_run = require "scripts.player.moveset.m_run"
@@ -73,6 +74,8 @@ function init(self)
 	}, "c_idle", self.vars)
 
 	self.correction = vmath.vector3()
+
+	self.vars.currentSpeed = self.vars.cfg.speed
 end
 	
 function update(self, dt)
@@ -144,6 +147,8 @@ function on_input(self, action_id, action)
 	end
 
 	v.moveDir = (v.dirKeys.right and 1 or 0) - (v.dirKeys.left and 1 or 0)
+	if v.moveDir ~= 0 then v.facing = v.moveDir end
+	speed.onDirChange(v)
 	
 	self.mov:input(action_id,action)
 	self.combat:input(action_id, action)

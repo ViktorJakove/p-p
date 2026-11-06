@@ -1,4 +1,5 @@
 local ground = require("scripts.player.shared.ground")
+local speed = require("scripts.player.shared.speed")
 local M = {}
 
 function M.sign(x)

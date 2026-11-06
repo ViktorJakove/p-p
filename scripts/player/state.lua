@@ -26,11 +26,15 @@ function M.new(props)
 			pounds = 0,
 			canSwim = true,
 		},
+		
+		currentSpeed = 0,
+		
 		velocity = vmath.vector3(),
 		moveDir = 0,
 		dirKeys = {left = false, right = false},
 		poundDir = vmath.vector3(),
 		bounceDir = vmath.vector3(),
+		facing = 1,
 		crashSpeed = 0,
 		keepX = false,
 		isGrounded = false,

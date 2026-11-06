@@ -8,7 +8,7 @@ embedded_instances {
   "  component: \"/scripts/player/player.script\"\n"
   "  properties {\n"
   "    id: \"speed\"\n"
-  "    value: \"400.0\"\n"
+  "    value: \"450.0\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "  properties {\n"
@@ -95,6 +95,7 @@ embedded_instances {
   "  shapes {\\n"
   "    shape_type: TYPE_BOX\\n"
   "    position {\\n"
+  "      y: -22.0\\n"
   "    }\\n"
   "    rotation {\\n"
   "    }\\n"
@@ -103,7 +104,7 @@ embedded_instances {
   "    id: \\\"feet\\\"\\n"
   "  }\\n"
   "  data: 24.995466\\n"
-  "  data: 47.716984\\n"
+  "  data: 25.661442\\n"
   "  data: 10.0\\n"
   "}\\n"
   "\"\n"
@@ -172,9 +173,12 @@ embedded_instances {
   "font: \\\"/builtins/fonts/default.font\\\"\\n"
   "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
   "\"\n"
+  "  position {\n"
+  "    y: -20.0\n"
+  "  }\n"
   "  scale {\n"
   "    x: 1.360001\n"
-  "    y: 9.439999\n"
+  "    y: 5.529689\n"
   "  }\n"
   "}\n"
   ""
@@ -321,8 +325,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 522.0
-    y: -86.0
+    x: 1376.0
+    y: 196.0
   }
 }
 embedded_instances {
@@ -429,8 +433,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 992.0
-    y: 159.0
+    x: 768.0
+    y: 268.0
   }
 }
 embedded_instances {

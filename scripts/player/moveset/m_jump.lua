@@ -15,7 +15,6 @@ function M.enter(vars,from)
 end
 
 function M.update(vars,dt, fsm)
-	print(vars.moveDir)
 	air.apply(vars, dt)
 end
 

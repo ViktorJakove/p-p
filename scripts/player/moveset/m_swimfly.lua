@@ -11,7 +11,7 @@ end
 
 function M.update(vars, dt, fsm)
 	air.apply(vars, dt)
-	vars.velocity.x = vars.velocity.x - (vars.velocity.x * 0.01)
+	vars.velocity.x = vars.velocity.x - (vars.velocity.x * 0.0025)
 end
 
 function M.handle_input(vars, action_id, action, fsm)

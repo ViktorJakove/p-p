@@ -1,8 +1,7 @@
 --fly
 
 --kamera
----- BOUNDARIES
-----screenchange- stoptime (bounce, pound)
+----stoptime (bounce, pound)
 ----screen shake (crash)
 
 --textsys

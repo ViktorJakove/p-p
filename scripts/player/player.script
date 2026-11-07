@@ -1,3 +1,4 @@
+
 local fsm = require "scripts.player.fsm"
 local state = require "scripts.player.state"
 local cameraState = require"scripts.camera.camera_state"
@@ -128,7 +129,6 @@ function on_message(self, message_id, message, sender)
 			self.vars.wallNormal.y = message.normal.y
 		end
 	end
-	print(self.vars.facing + 10)
 end
 
 function on_input(self, action_id, action)

@@ -111,7 +111,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    y: -96.0
+    x: 233.0
+    y: 844.0
   }
 }
 embedded_instances {
@@ -162,6 +163,10 @@ embedded_instances {
   "\"\n"
   "}\n"
   ""
+  position {
+    x: 357.0
+    y: 810.0
+  }
 }
 embedded_instances {
   id: "groundspr"
@@ -533,8 +538,4 @@ embedded_instances {
   "\"\n"
   "}\n"
   ""
-  position {
-    x: -438.0
-    y: -932.0
-  }
 }

@@ -7,6 +7,7 @@
 --textsys
 --zvuk ne pri ?!.-
 -- tilda a cislo ~9 je 0.9 wait
+--id animace a animace ke kazdymu nodu a thumbnailu
 
 --feel
 ----coyote time

@@ -36,7 +36,7 @@ function update(self, dt)
 
 	self.base.x = self.base.x + (pos.x - self.base.x) * damp(self.follow_speed_x, dt)
 	self.base.y = self.base.y + (pos.y - self.base.y) * damp(self.follow_speed_y, dt)
-	
+
 	local desired = vmath.vector3()
 	local multiplicator = cameraState.lagStates[cameraState.state]
 	if multiplicator then

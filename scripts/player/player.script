@@ -106,6 +106,7 @@ function on_message(self, message_id, message, sender)
 				go.set_position(go.get_position()+comp)
 				self.correction = self.correction + comp
 			end
+			speed.reset(self.vars)
 		end
 		
 		if message.normal.y >= FLOOR_MIN_NY then

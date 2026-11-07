@@ -1,3 +1,4 @@
+--camera trochu offset nahoru
 --fly
 
 --kamera

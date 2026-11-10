@@ -1,12 +1,14 @@
-local npc_ids = require "scripts/npc/npc_ids"
+function init(self)
+end
 
-go.property("npc_id", hash("skeleton"))
+function final(self)
+end
+
+function update(self, dt)
+end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("trigger_response") then
-		msg.post("/npc#script", message.enter and "npc_enter" or "npc_exit", {
-			id = npc_ids[self.npc_id],
-			pos = go.get_world_position(),
-		})
-	end
+end
+
+function on_input(self, action_id, action)
 end

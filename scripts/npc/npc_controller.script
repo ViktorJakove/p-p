@@ -6,7 +6,7 @@ local BIG = vmath.vector3(320,140,0)
 local BASE_Y = 60
 local PAD = 14
 local LINE_H = 20
-local CHOICE_X = 12
+local POINTER_X = 12
 local GROW_TIME = 0.2
 
 local function setPos(id,x,y)
@@ -33,18 +33,24 @@ end
 
 local function updatePointer(self)
 	local count = #self.entry.choices
+	local top = BASE_Y + LINE_H * count
+	setPos("pointer", -BIG.x / 2 + PAD + POINTER_X, top - LINE_H * (self.selected - 0.5))
 end
+
+local function showNode(self,nodeId)
+end
+
+local function finishTyping(self) end
+local function open (self, player) end
+local function close (self) end
 
 function init(self)
 end
 
-function final(self)
+function on_message(self, message_id, message, sender)
 end
 
 function update(self, dt)
-end
-
-function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)

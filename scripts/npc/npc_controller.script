@@ -38,11 +38,48 @@ local function updatePointer(self)
 end
 
 local function showNode(self,nodeId)
+	self.entry = npc_data(self.id).nodes[nodeId]
+	self.typing = true
+	self.timer = 0
+	self.lastChars = 0
+	self.selected = 1
+	label.set_text("text#label", "")
+	label.set_text("choices#label", "")
+	msg.post("pointer#sprite","disable")
 end
 
-local function finishTyping(self) end
-local function open (self, player) end
-local function close (self) end
+local function finishTyping(self)
+	self.typing = false
+	label.set_text("text#label", self.entry.text)
+	if self.entry.choices then
+		local names = {}
+		for i, c in ipairs(self.entry.choices) do names[i] = c[1] end
+		msg.post("pointer#sprite", "enable")
+		updatePointer(self)
+	end
+end
+
+local function open (self, player)
+	self.talking = true
+	self.player = player
+
+	msg.post("bubble#thumb", "disable")
+
+	go.animate("bubble#bg", "size", go.PLAYBACK_ONCE_FORWARD, BIG, go.EASING_OUTQUAD, GROW_TIME)
+	go.animate("bubble", "position.y", go.PLAYBACK_ONCE_FORWARD, BASE_Y + BIG.y /2, go.EASING_OUTQUAD, GROW_TIME)
+
+	setPos("text", -BIG.x /2 + PAD, BASE_Y + BIG.y - PAD)
+	setPos("choices", -BIG.x /2 + PAD + POINTER_X * 2, BASE_Y + LINE_H*3)
+
+	msg.post(".","acquire_input_focus")
+	msg.post(player,"dialogue_started")
+	showNode(self, npc_states.getStartNode(self.id))
+	self.timer = -GROW_TIME
+end
+
+local function close (self)
+
+end
 
 function init(self)
 end

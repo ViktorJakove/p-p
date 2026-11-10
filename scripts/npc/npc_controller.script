@@ -1,3 +1,40 @@
+local npc_data = require("scripts.npc.npc_data")
+local npc_states = require("scripts.npc.npc_state")
+
+local SMALL = vmath.vector3(120,40,0)
+local BIG = vmath.vector3(320,140,0)
+local BASE_Y = 60
+local PAD = 14
+local LINE_H = 20
+local CHOICE_X = 12
+local GROW_TIME = 0.2
+
+local function setPos(id,x,y)
+	local p = go.get_position(id)
+	if type(x) == "number" then p.x = x end
+	p.y =y
+	go.set_position(p, id)
+end
+
+local function showThumb(self)
+	local visible = self.id ~= nil and not self.talking
+	local m = visible and "enable" or "disable"
+	msg.post("bubble#bg", m)
+	msg.post("bubble#thumb", m)
+	if visible then
+		go.set_position(self.pos)
+		label.set_text("bubble#thumb", npc_states.getThumb(self.id))
+		go.cancel_animations("bubble#bg", "size")
+		go.cancel_animations("bubble#thumb", "position.y")
+		go.set("bubble#bg", "size", SMALL)
+		setPos("bubble","fuckts", BASE_Y + SMALL.y / 2)
+	end
+end
+
+local function updatePointer(self)
+	local count = #self.entry.choices
+end
+
 function init(self)
 end
 

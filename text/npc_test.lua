@@ -1,5 +1,7 @@
 -- LOCK, RESET, END - endings
 --recruit = add kaching !
+local h = require "scripts/npc/npc_text_helper"
+local say, ask = h.say, h.ask
 return{
 	style = {
 		cps = 10,
@@ -18,15 +20,15 @@ return{
 		completed = {"afterend"}
 	},
 	nodes ={
-		t0 = {"nazdaaar baby", "t1"},
-		t1 = {"dlouho jsme se neviděli... mama", "ask0"},
-		ask0 = { "co se dějě babyMAMA?",
+		t0 = say("nazdaaar baby", "t1"),
+		t1 = say("dlouho jsme se neviděli... mama", "ask0"),
+		ask0 = ask( "co se dějě babyMAMA?",
 			{"nic", "RESET"},
 			{ "Come to war with me", "recruit" },
 			{ "chcípni kundo",  "insult" }
-		},
-		recruit = {"hell yeah baby mama", "END"},
-		insult = {"sám si naser!!!!!! fucker", "LOCK"},
-		afterend = {"mgfitman babymama"}
+		),
+		recruit = say("hell yeah baby mama",nil, "END"),
+		insult = say("sám si naser!!!!!! fucker",nil, "LOCK"),
+		afterend = say("mgfitman babymama")
 	}
 }

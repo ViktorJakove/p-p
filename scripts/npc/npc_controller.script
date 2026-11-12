@@ -1,5 +1,5 @@
 local npc_data = require("scripts.npc.npc_data")
-local npc_states = require("scripts.npc.npc_state")
+local npc_states = require("scripts.npc.npc_states")
 
 local SMALL = vmath.vector3(120,40,0)
 local BIG = vmath.vector3(320,140,0)

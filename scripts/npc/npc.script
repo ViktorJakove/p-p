@@ -4,7 +4,7 @@ go.property("npc_id", hash("test"))
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("trigger_response") then
-		msg.post("/npc#script", message.enter and "npc_enter" or "npc_exit", {
+		msg.post("/dialogue#npc_controller", message.enter and "npc_enter" or "npc_exit", {
 			id = npc_ids[self.npc_id],
 			pos = go.get_world_position(),
 		})

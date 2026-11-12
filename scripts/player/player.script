@@ -129,12 +129,15 @@ function on_message(self, message_id, message, sender)
 			self.vars.wallNormal.y = message.normal.y
 		end
 	end
+
+	if message_id == hash("dialogue_started") then self.canMove = false
+	elseif message_id == hash("dialogue_finished") then self.canMove = true end
 end
 
 function on_input(self, action_id, action)
 
 	--debug
-	if not self.mov then return end
+	--if not self.mov then return end
 
 	local v = self.vars
 
@@ -154,4 +157,6 @@ function on_input(self, action_id, action)
 	
 	self.mov:input(action_id,action)
 	self.combat:input(action_id, action)
+
+	if action_id == hash("attack") and action.pressed then msg.post("/dialogue#npc_controller","talk") end
 end

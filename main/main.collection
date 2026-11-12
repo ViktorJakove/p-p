@@ -198,7 +198,6 @@ embedded_instances {
   children: "go3"
   children: "go4"
   children: "go5"
-  children: "go6"
   data: "components {\n"
   "  id: \"bezjmena\"\n"
   "  component: \"/assets/gfx/tilesources/bezjmena.tilemap\"\n"
@@ -228,15 +227,27 @@ embedded_instances {
   "  component: \"/scripts/npc/npc_controller.script\"\n"
   "}\n"
   ""
+  position {
+    x: 419.0
+    y: 824.0
+  }
 }
 embedded_instances {
   id: "bubble"
   data: "embedded_components {\n"
-  "  id: \"bubble\"\n"
+  "  id: \"bg\"\n"
   "  type: \"sprite\"\n"
-  "  data: \"default_animation: \\\"\\\"\\n"
+  "  data: \"default_animation: \\\"logo\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "size {\\n"
+  "  x: 32.0\\n"
+  "  y: 32.0\\n"
+  "}\\n"
   "size_mode: SIZE_MODE_MANUAL\\n"
+  "textures {\\n"
+  "  sampler: \\\"texture_sampler\\\"\\n"
+  "  texture: \\\"/main/main.atlas\\\"\\n"
+  "}\\n"
   "\"\n"
   "}\n"
   "embedded_components {\n"
@@ -290,8 +301,12 @@ embedded_instances {
   data: "embedded_components {\n"
   "  id: \"sprite\"\n"
   "  type: \"sprite\"\n"
-  "  data: \"default_animation: \\\"\\\"\\n"
+  "  data: \"default_animation: \\\"particle_blob\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "textures {\\n"
+  "  sampler: \\\"texture_sampler\\\"\\n"
+  "  texture: \\\"/main/main.atlas\\\"\\n"
+  "}\\n"
   "\"\n"
   "}\n"
   ""
@@ -505,29 +520,6 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "go6"
-  data: "embedded_components {\n"
-  "  id: \"sprite\"\n"
-  "  type: \"sprite\"\n"
-  "  data: \"default_animation: \\\"draft1ci\\\"\\n"
-  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
-  "size {\\n"
-  "  x: 32.0\\n"
-  "  y: 32.0\\n"
-  "}\\n"
-  "textures {\\n"
-  "  sampler: \\\"texture_sampler\\\"\\n"
-  "  texture: \\\"/assets/images/testatlas.atlas\\\"\\n"
-  "}\\n"
-  "\"\n"
-  "}\n"
-  ""
-  position {
-    x: 418.0
-    y: 751.0
-  }
-}
-embedded_instances {
   id: "sprite1"
   data: "embedded_components {\n"
   "  id: \"label\"\n"
@@ -645,5 +637,61 @@ embedded_instances {
   scale3 {
     x: 3.995891
     y: 8.425092
+  }
+}
+embedded_instances {
+  id: "test"
+  data: "components {\n"
+  "  id: \"npc\"\n"
+  "  component: \"/scripts/npc/npc.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"sprite\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"default_animation: \\\"draft1ci\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "size {\\n"
+  "  x: 32.0\\n"
+  "  y: 32.0\\n"
+  "}\\n"
+  "textures {\\n"
+  "  sampler: \\\"texture_sampler\\\"\\n"
+  "  texture: \\\"/assets/images/testatlas.atlas\\\"\\n"
+  "}\\n"
+  "\"\n"
+  "  scale {\n"
+  "    x: 2.0\n"
+  "    y: 2.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"collisionobject\"\n"
+  "  type: \"collisionobject\"\n"
+  "  data: \"type: COLLISION_OBJECT_TYPE_TRIGGER\\n"
+  "mass: 0.0\\n"
+  "friction: 0.1\\n"
+  "restitution: 0.5\\n"
+  "group: \\\"npc\\\"\\n"
+  "mask: \\\"player\\\"\\n"
+  "embedded_collision_shape {\\n"
+  "  shapes {\\n"
+  "    shape_type: TYPE_BOX\\n"
+  "    position {\\n"
+  "    }\\n"
+  "    rotation {\\n"
+  "    }\\n"
+  "    index: 0\\n"
+  "    count: 3\\n"
+  "  }\\n"
+  "  data: 44.962307\\n"
+  "  data: 29.27763\\n"
+  "  data: 10.0\\n"
+  "}\\n"
+  "\"\n"
+  "}\n"
+  ""
+  position {
+    x: 418.0
+    y: 765.0
   }
 }

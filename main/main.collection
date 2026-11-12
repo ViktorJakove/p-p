@@ -191,6 +191,146 @@ embedded_instances {
   ""
 }
 embedded_instances {
+  id: "map"
+  children: "go"
+  children: "go1"
+  children: "go2"
+  children: "go3"
+  children: "go4"
+  children: "go5"
+  children: "go6"
+  data: "components {\n"
+  "  id: \"bezjmena\"\n"
+  "  component: \"/assets/gfx/tilesources/bezjmena.tilemap\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"collisionobject\"\n"
+  "  type: \"collisionobject\"\n"
+  "  data: \"collision_shape: \\\"/assets/gfx/tilesources/bezjmena.tilemap\\\"\\n"
+  "type: COLLISION_OBJECT_TYPE_STATIC\\n"
+  "mass: 0.0\\n"
+  "friction: 0.1\\n"
+  "restitution: 0.5\\n"
+  "group: \\\"default\\\"\\n"
+  "mask: \\\"player\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "dialogue"
+  children: "bubble"
+  children: "choices"
+  children: "pointer"
+  children: "text"
+  data: "components {\n"
+  "  id: \"npc_controller\"\n"
+  "  component: \"/scripts/npc/npc_controller.script\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "bubble"
+  data: "embedded_components {\n"
+  "  id: \"bubble\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"default_animation: \\\"\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "size_mode: SIZE_MODE_MANUAL\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"thumb\"\n"
+  "  type: \"label\"\n"
+  "  data: \"size {\\n"
+  "  x: 128.0\\n"
+  "  y: 32.0\\n"
+  "}\\n"
+  "text: \\\"Label\\\"\\n"
+  "font: \\\"/builtins/fonts/default.font\\\"\\n"
+  "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "text"
+  data: "embedded_components {\n"
+  "  id: \"label\"\n"
+  "  type: \"label\"\n"
+  "  data: \"size {\\n"
+  "  x: 128.0\\n"
+  "  y: 32.0\\n"
+  "}\\n"
+  "text: \\\"Label\\\"\\n"
+  "font: \\\"/builtins/fonts/default.font\\\"\\n"
+  "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "choices"
+  data: "embedded_components {\n"
+  "  id: \"label\"\n"
+  "  type: \"label\"\n"
+  "  data: \"size {\\n"
+  "  x: 128.0\\n"
+  "  y: 32.0\\n"
+  "}\\n"
+  "text: \\\"Label\\\"\\n"
+  "font: \\\"/builtins/fonts/default.font\\\"\\n"
+  "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "pointer"
+  data: "embedded_components {\n"
+  "  id: \"sprite\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"default_animation: \\\"\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "go"
+  children: "sprite1"
+  data: "embedded_components {\n"
+  "  id: \"collisionobject\"\n"
+  "  type: \"collisionobject\"\n"
+  "  data: \"type: COLLISION_OBJECT_TYPE_STATIC\\n"
+  "mass: 0.0\\n"
+  "friction: 0.1\\n"
+  "restitution: 0.5\\n"
+  "group: \\\"ground\\\"\\n"
+  "mask: \\\"player\\\"\\n"
+  "embedded_collision_shape {\\n"
+  "  shapes {\\n"
+  "    shape_type: TYPE_BOX\\n"
+  "    position {\\n"
+  "    }\\n"
+  "    rotation {\\n"
+  "    }\\n"
+  "    index: 0\\n"
+  "    count: 3\\n"
+  "  }\\n"
+  "  data: 835.4959\\n"
+  "  data: 45.491535\\n"
+  "  data: 10.0\\n"
+  "}\\n"
+  "\"\n"
+  "}\n"
+  ""
+  position {
+    x: -1655.0
+    y: -255.0
+  }
+}
+embedded_instances {
   id: "go1"
   children: "sprite"
   data: "embedded_components {\n"
@@ -229,80 +369,6 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "sprite"
-  data: "embedded_components {\n"
-  "  id: \"label\"\n"
-  "  type: \"label\"\n"
-  "  data: \"size {\\n"
-  "  x: 128.0\\n"
-  "  y: 32.0\\n"
-  "}\\n"
-  "text: \\\"Label\\\"\\n"
-  "font: \\\"/builtins/fonts/default.font\\\"\\n"
-  "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
-  "\"\n"
-  "}\n"
-  ""
-  scale3 {
-    x: 24.891563
-    y: 8.425092
-  }
-}
-embedded_instances {
-  id: "go"
-  children: "sprite1"
-  data: "embedded_components {\n"
-  "  id: \"collisionobject\"\n"
-  "  type: \"collisionobject\"\n"
-  "  data: \"type: COLLISION_OBJECT_TYPE_STATIC\\n"
-  "mass: 0.0\\n"
-  "friction: 0.1\\n"
-  "restitution: 0.5\\n"
-  "group: \\\"ground\\\"\\n"
-  "mask: \\\"player\\\"\\n"
-  "embedded_collision_shape {\\n"
-  "  shapes {\\n"
-  "    shape_type: TYPE_BOX\\n"
-  "    position {\\n"
-  "    }\\n"
-  "    rotation {\\n"
-  "    }\\n"
-  "    index: 0\\n"
-  "    count: 3\\n"
-  "  }\\n"
-  "  data: 835.4959\\n"
-  "  data: 45.491535\\n"
-  "  data: 10.0\\n"
-  "}\\n"
-  "\"\n"
-  "}\n"
-  ""
-  position {
-    x: -1655.0
-    y: -255.0
-  }
-}
-embedded_instances {
-  id: "sprite1"
-  data: "embedded_components {\n"
-  "  id: \"label\"\n"
-  "  type: \"label\"\n"
-  "  data: \"size {\\n"
-  "  x: 128.0\\n"
-  "  y: 32.0\\n"
-  "}\\n"
-  "text: \\\"Label\\\"\\n"
-  "font: \\\"/builtins/fonts/default.font\\\"\\n"
-  "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
-  "\"\n"
-  "}\n"
-  ""
-  scale3 {
-    x: 46.631668
-    y: 8.425092
-  }
-}
-embedded_instances {
   id: "go2"
   children: "sprite2"
   data: "embedded_components {\n"
@@ -334,26 +400,6 @@ embedded_instances {
   position {
     x: 99.0
     y: 196.0
-  }
-}
-embedded_instances {
-  id: "sprite2"
-  data: "embedded_components {\n"
-  "  id: \"label\"\n"
-  "  type: \"label\"\n"
-  "  data: \"size {\\n"
-  "  x: 128.0\\n"
-  "  y: 32.0\\n"
-  "}\\n"
-  "text: \\\"Label\\\"\\n"
-  "font: \\\"/builtins/fonts/default.font\\\"\\n"
-  "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
-  "\"\n"
-  "}\n"
-  ""
-  scale3 {
-    x: 3.995891
-    y: 8.425092
   }
 }
 embedded_instances {
@@ -391,26 +437,6 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "sprite3"
-  data: "embedded_components {\n"
-  "  id: \"label\"\n"
-  "  type: \"label\"\n"
-  "  data: \"size {\\n"
-  "  x: 128.0\\n"
-  "  y: 32.0\\n"
-  "}\\n"
-  "text: \\\"Label\\\"\\n"
-  "font: \\\"/builtins/fonts/default.font\\\"\\n"
-  "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
-  "\"\n"
-  "}\n"
-  ""
-  scale3 {
-    x: 3.995891
-    y: 8.425092
-  }
-}
-embedded_instances {
   id: "go4"
   children: "sprite4"
   data: "embedded_components {\n"
@@ -442,26 +468,6 @@ embedded_instances {
   position {
     x: -509.0
     y: 268.0
-  }
-}
-embedded_instances {
-  id: "sprite4"
-  data: "embedded_components {\n"
-  "  id: \"label\"\n"
-  "  type: \"label\"\n"
-  "  data: \"size {\\n"
-  "  x: 128.0\\n"
-  "  y: 32.0\\n"
-  "}\\n"
-  "text: \\\"Label\\\"\\n"
-  "font: \\\"/builtins/fonts/default.font\\\"\\n"
-  "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
-  "\"\n"
-  "}\n"
-  ""
-  scale3 {
-    x: 3.995891
-    y: 8.425092
   }
 }
 embedded_instances {
@@ -499,7 +505,70 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "sprite5"
+  id: "go6"
+  data: "embedded_components {\n"
+  "  id: \"sprite\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"default_animation: \\\"draft1ci\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "size {\\n"
+  "  x: 32.0\\n"
+  "  y: 32.0\\n"
+  "}\\n"
+  "textures {\\n"
+  "  sampler: \\\"texture_sampler\\\"\\n"
+  "  texture: \\\"/assets/images/testatlas.atlas\\\"\\n"
+  "}\\n"
+  "\"\n"
+  "}\n"
+  ""
+  position {
+    x: 418.0
+    y: 751.0
+  }
+}
+embedded_instances {
+  id: "sprite1"
+  data: "embedded_components {\n"
+  "  id: \"label\"\n"
+  "  type: \"label\"\n"
+  "  data: \"size {\\n"
+  "  x: 128.0\\n"
+  "  y: 32.0\\n"
+  "}\\n"
+  "text: \\\"Label\\\"\\n"
+  "font: \\\"/builtins/fonts/default.font\\\"\\n"
+  "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+  scale3 {
+    x: 46.631668
+    y: 8.425092
+  }
+}
+embedded_instances {
+  id: "sprite"
+  data: "embedded_components {\n"
+  "  id: \"label\"\n"
+  "  type: \"label\"\n"
+  "  data: \"size {\\n"
+  "  x: 128.0\\n"
+  "  y: 32.0\\n"
+  "}\\n"
+  "text: \\\"Label\\\"\\n"
+  "font: \\\"/builtins/fonts/default.font\\\"\\n"
+  "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+  scale3 {
+    x: 24.891563
+    y: 8.425092
+  }
+}
+embedded_instances {
+  id: "sprite2"
   data: "embedded_components {\n"
   "  id: \"label\"\n"
   "  type: \"label\"\n"
@@ -519,41 +588,62 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "map"
-  data: "components {\n"
-  "  id: \"bezjmena\"\n"
-  "  component: \"/assets/gfx/tilesources/bezjmena.tilemap\"\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"collisionobject\"\n"
-  "  type: \"collisionobject\"\n"
-  "  data: \"collision_shape: \\\"/assets/gfx/tilesources/bezjmena.tilemap\\\"\\n"
-  "type: COLLISION_OBJECT_TYPE_STATIC\\n"
-  "mass: 0.0\\n"
-  "friction: 0.1\\n"
-  "restitution: 0.5\\n"
-  "group: \\\"default\\\"\\n"
-  "mask: \\\"player\\\"\\n"
+  id: "sprite3"
+  data: "embedded_components {\n"
+  "  id: \"label\"\n"
+  "  type: \"label\"\n"
+  "  data: \"size {\\n"
+  "  x: 128.0\\n"
+  "  y: 32.0\\n"
+  "}\\n"
+  "text: \\\"Label\\\"\\n"
+  "font: \\\"/builtins/fonts/default.font\\\"\\n"
+  "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
   "\"\n"
   "}\n"
   ""
+  scale3 {
+    x: 3.995891
+    y: 8.425092
+  }
 }
 embedded_instances {
-  id: "go6"
+  id: "sprite4"
   data: "embedded_components {\n"
-  "  id: \"sprite\"\n"
-  "  type: \"sprite\"\n"
-  "  data: \"default_animation: \\\"draft1ci\\\"\\n"
-  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
-  "textures {\\n"
-  "  sampler: \\\"texture_sampler\\\"\\n"
-  "  texture: \\\"/assets/images/testatlas.atlas\\\"\\n"
+  "  id: \"label\"\n"
+  "  type: \"label\"\n"
+  "  data: \"size {\\n"
+  "  x: 128.0\\n"
+  "  y: 32.0\\n"
   "}\\n"
+  "text: \\\"Label\\\"\\n"
+  "font: \\\"/builtins/fonts/default.font\\\"\\n"
+  "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
   "\"\n"
   "}\n"
   ""
-  position {
-    x: 418.0
-    y: 751.0
+  scale3 {
+    x: 3.995891
+    y: 8.425092
+  }
+}
+embedded_instances {
+  id: "sprite5"
+  data: "embedded_components {\n"
+  "  id: \"label\"\n"
+  "  type: \"label\"\n"
+  "  data: \"size {\\n"
+  "  x: 128.0\\n"
+  "  y: 32.0\\n"
+  "}\\n"
+  "text: \\\"Label\\\"\\n"
+  "font: \\\"/builtins/fonts/default.font\\\"\\n"
+  "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+  scale3 {
+    x: 3.995891
+    y: 8.425092
   }
 }

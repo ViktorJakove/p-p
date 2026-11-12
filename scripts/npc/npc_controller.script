@@ -78,16 +78,55 @@ local function open (self, player)
 end
 
 local function close (self)
-
+	npc_states.applyEnding(self.id,self.entry.ending)
+	self.talking = false
+	label.set_text("text#label", "")
+	label.set_text("choices#label", "")
+	msg.post("pointer#sprite", "disable")
+	msg.post(".", "release_input_focus")
+	msg.post("self.player", "dialogue_finished")
+	showThumb(self)
 end
 
 function init(self)
+	self.id = nil
+	self.talking = false
+	self.typing = false
+	showThumb(self)
+	msg.post("pointer#sprite","disable")
+	label.set_text("text#label", "")
+	label.set_text("choices#label", "")
 end
 
 function on_message(self, message_id, message, sender)
+	if message_id == hash("npc_enter") then
+		if self.talking then return end
+		self.id, self.pos = message.id, message.pos
+		showThumb(self)
+	elseif message_id == hash("npc_exit") then
+		if not self.talking and self.id == message.id then
+			self.id = nil
+			showThumb(self)
+		end
+	elseif message_id == hash("talk") then
+		if not self.talking and self.id and npc_states.canInteract(self.id) then
+			open(self,sender)
+		end
+	end
 end
 
 function update(self, dt)
+	if not self.talking or not self.typing then return end
+	self.timer = self.timer + dt
+	if self.timer < 0 then return end
+
+	local style = npc_data(self.id).style or {}
+	local n = math.floor(self.timer * (self.cps or 30))
+	if n>= #self.entry.text then
+		self.lastChars = n
+		--local sfx = style.blip or require("assets/sfx/npc/defaultBlip")
+		--sound.play(sfx)
+	end
 end
 
 function on_input(self, action_id, action)

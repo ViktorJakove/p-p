@@ -123,11 +123,34 @@ function update(self, dt)
 	local style = npc_data(self.id).style or {}
 	local n = math.floor(self.timer * (self.cps or 30))
 	if n>= #self.entry.text then
-		self.lastChars = n
-		--local sfx = style.blip or require("assets/sfx/npc/defaultBlip")
-		--sound.play(sfx)
+		finishTyping(self)
+	else
+		label.set_text("text.label", self.entry.text.sub(1,n))
+		if n ~= self.lastChars then
+			self.lastChars = n
+			--local sfx = style.blip or require("assets/sfx/npc/defaultBlip")
+			--sound.play(sfx)
+		end
 	end
 end
 
 function on_input(self, action_id, action)
+	if not self.talking then return false end
+	if not action.pressed then return true end
+	if self.timer <0 then return true end
+	
+	if action_id == hash("confirm") then
+		if self.typing then finishTyping(self)
+		elseif self.entry.choices then
+			showNode(self, self.entry.choices[self.selected[2]])
+		elseif self.entry.next then
+			showNode(self, self.entry.next)
+		else close(self) end
+	elseif not self.typing and self.entry.choices then
+		local count = #self.entry.choices
+		if action_id == hash("down") then self.selected = self.selected % count + 1 end
+		if action_id == hash("up") then self.selected = (self.selected-2) % count + 1 end
+		updatePointer(self)
+	end
+	return true
 end

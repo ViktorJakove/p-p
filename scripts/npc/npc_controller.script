@@ -90,8 +90,8 @@ local function close (self)
 	self.talking = false
 	hideBubble()
 	msg.post(".", "release_input_focus")
-	msg.post("self.player", "dialogue_finished")
-	msg.post("self.npcUrl", "dialogue_finished")
+	msg.post(self.player, "dialogue_finished")
+	msg.post(self.npcUrl, "dialogue_finished")
 end
 
 function init(self)
@@ -108,8 +108,12 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("npc_exit") then
 		if not self.talking and self.id == message.id then self.id = nil end
 	elseif message_id == hash("talk") then
-		if not self.talking and self.id and npc_states.canInteract(self.id) then
-			open(self,sender)
+		if not self.talking and self.id then
+			if npc_states.canInteract(self.id) then
+				open(self, sender)
+			else
+				print("zatrepat bublinou")
+			end
 		end
 	end
 end
@@ -120,11 +124,11 @@ function update(self, dt)
 	if self.timer < 0 then return end
 
 	local style = npc_data(self.id).style or {}
-	local n = math.floor(self.timer * (self.cps or 30))
+	local n = math.floor(self.timer * (style.cps or 30))
 	if n>= utf_helper.utf8Len(self.entry.text) then
 		finishTyping(self)
 	else
-		label.set_text("text#label", utf_helper.utf8Sub(self.entry.text))
+		label.set_text("text#label", utf_helper.utf8Sub(self.entry.text,n))
 		if n ~= self.lastChars then
 			self.lastChars = n
 			--local sfx = style.blip or require("assets/sfx/npc/defaultBlip")
@@ -138,10 +142,16 @@ function on_input(self, action_id, action)
 	if not action.pressed then return true end
 	if self.timer <0 then return true end
 	
-	if action_id == hash("confirm") then
+	if action_id == hash("attack") then
 		if self.typing then finishTyping(self)
 		elseif self.entry.choices then
-			showNode(self, self.entry.choices[self.selected[2]])
+			local target = self.entry.choices[self.selected][2]
+			if target == "RESET" then
+				self.entry = {}
+				close(self)
+			else
+				showNode(self, target)
+			end
 		elseif self.entry.next then
 			showNode(self, self.entry.next)
 		else close(self) end

@@ -6,7 +6,7 @@ function M.utf8Len(s)
 end
 
 function M.utf8Sub(s, chars)
-	if chars <= 0 then return end
+	if chars <= 0 then return "" end
 	local i, count = 1, 0
 	while i <= #s do
 		local b = s:byte(i)

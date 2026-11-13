@@ -8,7 +8,8 @@ function M.getState(id)
 end
 
 function M.canInteract(id)
-	return M.getState(id) ~= "locked"
+	local blocked = npc_data(id).blocked_states or {}
+	return not blocked[M.getState(id)]
 end
 
 function M.getThumb(id)

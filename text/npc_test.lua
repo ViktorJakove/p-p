@@ -4,7 +4,7 @@ local h = require "scripts/npc/npc_text_helper"
 local say, ask = h.say, h.ask
 return{
 	style = {
-		cps = 10,
+		cps = 35,
 		-- blip = "/sounds#skeleton_blip",
 	},
 	
@@ -16,8 +16,8 @@ return{
 		locked = {"yo fuckermama", ""}
 	},
 	start = {
-		default = {"t0"},
-		completed = {"afterend"}
+		default = "t0",
+		completed = "afterend"
 	},
 	nodes ={
 		t0 = say("nazdaaar baby", "t1"),

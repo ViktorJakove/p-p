@@ -1,9 +1,11 @@
-local function utf8Len(s)
+local M = {}
+
+function M.utf8Len(s)
 	local _, count = s:gsub("[^\128-\191]","")
 	return count
 end
 
-local function utf8Sub(s, chars)
+function M.utf8Sub(s, chars)
 	if chars <= 0 then return end
 	local i, count = 1, 0
 	while i <= #s do
@@ -15,3 +17,5 @@ local function utf8Sub(s, chars)
 	end
 	return s
 end
+
+return M

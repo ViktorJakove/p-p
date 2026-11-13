@@ -130,7 +130,19 @@ function on_message(self, message_id, message, sender)
 		end
 	end
 
-	if message_id == hash("dialogue_started") then self.canMove = false
+	--if message_id == hash("dialogue_started") then self.canMove = false
+	--elseif message_id == hash("dialogue_finished") then self.canMove = true end
+	if message_id == hash("npc_near") then self.nearNpc = message.id
+	elseif message_id == hash("npc_far") then if self.nearNpc == message.id then self.nearNpc = nil end
+	elseif message_id == hash("dialogue_started") then
+		self.canMove = false
+		local v = self.vars
+		v.dirKeys.left, v.dirKeys.right = false, false
+		v.moveDir = 0
+		v.crouchHeld = false
+		v.upHeld = false
+		v.velocity.x = 0
+		speed.onDirChange(v)
 	elseif message_id == hash("dialogue_finished") then self.canMove = true end
 end
 

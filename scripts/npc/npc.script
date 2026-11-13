@@ -11,7 +11,7 @@ local function refresh (self,instant)
 	msg.post("bubble#thumb", mess)
 	
 	if visible then 
-		label.set_text("bubble#thumb", npc_states.getThumb(self.id))
+		label.set_text("bubble#thumb", (npc_states.getThumb(self.id)))
 		if not self.shown and not instant then
 			go.set_scale(0.01, "bubble")
 			go.animate("bubble", "scale", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(1,1,1), go.EASING_OUTBACK, 0.15)
@@ -30,8 +30,6 @@ end
 	
 function on_message(self, message_id, message, sender)
 	if message_id == hash("trigger_response") then
-
-		print(sender)
 
 		self.near = message.enter
 		

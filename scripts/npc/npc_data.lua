@@ -1,8 +1,9 @@
-local cache = {}
+local modules = {
+	test = require("text.npc_test"),
+}
 
 return function(id)
-	if not cache[id] then
-		cache[id] = require("text/npc_" .. id)
-	end
-	return cache[id]
+	local data = modules[id]
+	assert(data, "no NPC text registered for id: " .. tostring(id))
+	return data
 end

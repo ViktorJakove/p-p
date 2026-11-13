@@ -12,8 +12,9 @@ function M.canInteract(id)
 end
 
 function M.getThumb(id)
-	local thumbs = npc_data(id.thumbnails)
-	return thumbs[M.getState(id)] or thumbs.default
+	local thumbs = npc_data(id).thumbnails
+	local t = thumbs[M.getState(id)] or thumbs.default
+	return t[1], t[2]
 end
 
 function M.getStart(id)
@@ -21,7 +22,7 @@ function M.getStart(id)
 	return n.start[M.getState(id)] or n.start.default
 end
 
-function applyEnding(id,ending)
+function M.applyEnding(id,ending)
 	if ending == "END" then states[id] = "completed"
 	elseif ending == "LOCK" then states[id] = "locked" end
 end

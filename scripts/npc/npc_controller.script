@@ -81,7 +81,7 @@ local function open (self, player)
 	msg.post(".","acquire_input_focus")
 	msg.post(player,"dialogue_started")
 	msg.post(self.npcUrl,"dialogue_started")
-	showNode(self, npc_states.getStartNode(self.id))
+	showNode(self, npc_states.getStart(self.id))
 	self.timer = -GROW_TIME
 end
 

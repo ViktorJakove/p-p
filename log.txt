@@ -1,5 +1,5 @@
 INFO:DLIB: Writing log to: ./log.txt
-INFO:ENGINE: Loading data from: http://127.0.0.1:62531/build
+INFO:ENGINE: Loading data from: build/default
 INFO:SOUND: Mix format:
 INFO:SOUND:   wFormatTag:       fffe  IEEE_FLOAT/PCM/EXTENSIBLE: 3 / 1 / fffe
 INFO:SOUND:   nChannels:        2
@@ -8,6 +8,7 @@ INFO:SOUND:   nAvgBytesPerSec:  384000
 INFO:SOUND:   nBlockAlign:      8
 INFO:SOUND:   wBitsPerSample:   32
 INFO:SOUND:   -> Format:        3  IEEE_FLOAT/PCM/EXTENSIBLE: 3 / 1 / fffe
+INFO:SOUND:   DSP backend: Fallback
 INFO:SOUND: Sound
 INFO:SOUND:   nSamplesPerSec:   48000
 INFO:SOUND:        useThread:   1
@@ -17,84 +18,17 @@ DEBUG:SCRIPT: idle
 DEBUG:SCRIPT: fall
 DEBUG:SCRIPT: idle
 DEBUG:SCRIPT: run
+DEBUG:SCRIPT: idle
+DEBUG:SCRIPT: run
+DEBUG:SCRIPT: idle
+DEBUG:SCRIPT: run
+DEBUG:SCRIPT: jump
+DEBUG:SCRIPT: fall
 DEBUG:SCRIPT: url: [main:/test/test#collisionobject]
-ERROR:SCRIPT: scripts/npc/npc_data.lua:5: attempt to concatenate local 'id' (a nil value)
-stack traceback:
-  scripts/npc/npc_data.lua:5: in function npc_data
-  scripts/npc/npc_states.lua:15: in function getThumb
-  scripts/npc/npc.script:14: in function refresh
-  scripts/npc/npc.script:43: in function <scripts/npc/npc.script:31>
-
-DEBUG:SCRIPT: idle
-DEBUG:SCRIPT: run
+DEBUG:SCRIPT: pound
+DEBUG:SCRIPT: npc: chybí node'table: 0x019e45e6d570' na 'test'
 DEBUG:SCRIPT: url: [main:/test/test#collisionobject]
+DEBUG:SCRIPT: poundfly
+DEBUG:SCRIPT: crash
+DEBUG:SCRIPT: 0.5
 DEBUG:SCRIPT: idle
-DEBUG:SCRIPT: run
-DEBUG:SCRIPT: url: [main:/test/test#collisionobject]
-ERROR:SCRIPT: scripts/npc/npc_data.lua:5: attempt to concatenate local 'id' (a nil value)
-stack traceback:
-  scripts/npc/npc_data.lua:5: in function npc_data
-  scripts/npc/npc_states.lua:15: in function getThumb
-  scripts/npc/npc.script:14: in function refresh
-  scripts/npc/npc.script:43: in function <scripts/npc/npc.script:31>
-
-DEBUG:SCRIPT: idle
-DEBUG:SCRIPT: run
-DEBUG:SCRIPT: url: [main:/test/test#collisionobject]
-DEBUG:SCRIPT: idle
-DEBUG:SCRIPT: run
-DEBUG:SCRIPT: url: [main:/test/test#collisionobject]
-ERROR:SCRIPT: scripts/npc/npc_data.lua:5: attempt to concatenate local 'id' (a nil value)
-stack traceback:
-  scripts/npc/npc_data.lua:5: in function npc_data
-  scripts/npc/npc_states.lua:15: in function getThumb
-  scripts/npc/npc.script:14: in function refresh
-  scripts/npc/npc.script:43: in function <scripts/npc/npc.script:31>
-
-DEBUG:SCRIPT: idle
-DEBUG:SCRIPT: run
-DEBUG:SCRIPT: url: [main:/test/test#collisionobject]
-DEBUG:SCRIPT: idle
-DEBUG:SCRIPT: run
-DEBUG:SCRIPT: url: [main:/test/test#collisionobject]
-ERROR:SCRIPT: scripts/npc/npc_data.lua:5: attempt to concatenate local 'id' (a nil value)
-stack traceback:
-  scripts/npc/npc_data.lua:5: in function npc_data
-  scripts/npc/npc_states.lua:15: in function getThumb
-  scripts/npc/npc.script:14: in function refresh
-  scripts/npc/npc.script:43: in function <scripts/npc/npc.script:31>
-
-DEBUG:SCRIPT: idle
-DEBUG:SCRIPT: run
-DEBUG:SCRIPT: idle
-DEBUG:SCRIPT: run
-DEBUG:SCRIPT: idle
-DEBUG:SCRIPT: run
-DEBUG:SCRIPT: idle
-DEBUG:SCRIPT: run
-DEBUG:SCRIPT: url: [main:/test/test#collisionobject]
-DEBUG:SCRIPT: idle
-DEBUG:SCRIPT: run
-DEBUG:SCRIPT: url: [main:/test/test#collisionobject]
-ERROR:SCRIPT: scripts/npc/npc_data.lua:5: attempt to concatenate local 'id' (a nil value)
-stack traceback:
-  scripts/npc/npc_data.lua:5: in function npc_data
-  scripts/npc/npc_states.lua:15: in function getThumb
-  scripts/npc/npc.script:14: in function refresh
-  scripts/npc/npc.script:43: in function <scripts/npc/npc.script:31>
-
-DEBUG:SCRIPT: idle
-DEBUG:SCRIPT: run
-DEBUG:SCRIPT: url: [main:/test/test#collisionobject]
-DEBUG:SCRIPT: idle
-DEBUG:SCRIPT: run
-DEBUG:SCRIPT: url: [main:/test/test#collisionobject]
-ERROR:SCRIPT: scripts/npc/npc_data.lua:5: attempt to concatenate local 'id' (a nil value)
-stack traceback:
-  scripts/npc/npc_data.lua:5: in function npc_data
-  scripts/npc/npc_states.lua:15: in function getThumb
-  scripts/npc/npc.script:14: in function refresh
-  scripts/npc/npc.script:43: in function <scripts/npc/npc.script:31>
-
-DEBUG:SCRIPT: idle
-INFO:DLIB: Flushing http cache to disk

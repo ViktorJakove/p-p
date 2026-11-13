@@ -1,12 +1,56 @@
-local npc_ids = require "scripts/npc/npc_ids"
+local npc_ids = require "scripts.npc.npc_ids"
+local npc_states = require "scripts.npc.npc_states"
 
 go.property("npc_id", hash("test"))
+go.property("alwaysShow", false)
 
+local function refresh (self,instant)
+	local visible = (self.alwaysShow or self.near) and not self.talking
+	local mess = visible and "enable" or "disable"
+	msg.post("bubble#bg", mess)
+	msg.post("bubble#thumb", mess)
+	
+	if visible then 
+		label.set_text("bubble#thumb", npc_states.getThumb(self.id))
+		if not self.shown and not instant then
+			go.set_scale(0.01, "bubble")
+			go.animate("bubble", "scale", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(1,1,1), go.EASING_OUTBACK, 0.15)
+		end
+	end
+	self.shown = visible
+end
+
+function init (self)
+	self.id = npc_ids[self.npc_id]
+	self.near = false
+	self.talking = false
+	self.shown = false
+	refresh(self, true)
+end
+	
 function on_message(self, message_id, message, sender)
 	if message_id == hash("trigger_response") then
+
+		print(sender)
+
+		self.near = message.enter
+		
 		msg.post("/dialogue#npc_controller", message.enter and "npc_enter" or "npc_exit", {
 			id = npc_ids[self.npc_id],
 			pos = go.get_world_position(),
 		})
+		msg.post(message.other_id, message.enter and "npc_near" or "npc_far", {id = self.id})
+		refresh(self,false)
+		
+	elseif message_id == hash("dialogue_started") then
+		self.talking = true
+		refresh(self, false)
+	elseif message_id == hash("dialogue_finished") then
+		self.talking = false
+		refresh(self, false) ---neu thumb
 	end
 end
+
+
+
+

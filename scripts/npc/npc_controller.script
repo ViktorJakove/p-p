@@ -1,6 +1,8 @@
 local npc_data = require("scripts.npc.npc_data")
 local npc_states = require("scripts.npc.npc_states")
 
+local utf_helper = require("scripts.npc.utf_helper")
+
 local SMALL = vmath.vector3(120,40,0)
 local BIG = vmath.vector3(320,140,0)
 local BASE_Y = 60
@@ -9,6 +11,9 @@ local LINE_H = 20
 local POINTER_X = 12
 local GROW_TIME = 0.2
 
+local MAX_CHOICES = 3
+local CHOICES_TOP = BASE_Y + PAD + LINE_H * MAX_CHOICES
+
 local function setPos(id,x,y)
 	local p = go.get_position(id)
 	if type(x) == "number" then p.x = x end
@@ -16,29 +21,24 @@ local function setPos(id,x,y)
 	go.set_position(p, id)
 end
 
-local function showThumb(self)
-	local visible = self.id ~= nil and not self.talking
-	local m = visible and "enable" or "disable"
-	msg.post("bubble#bg", m)
-	msg.post("bubble#thumb", m)
-	if visible then
-		go.set_position(self.pos)
-		label.set_text("bubble#thumb", npc_states.getThumb(self.id))
-		go.cancel_animations("bubble#bg", "size")
-		go.cancel_animations("bubble#thumb", "position.y")
-		go.set("bubble#bg", "size", SMALL)
-		setPos("bubble","fuckts", BASE_Y + SMALL.y / 2)
-	end
+local function hideBubble()
+	msg.post("bubble#bg","disable")
+	msg.post("pointer#sprite","disable")
+	label.set_text("text#label", "")
+	label.set_text("choices#label", "")
 end
 
 local function updatePointer(self)
-	local count = #self.entry.choices
-	local top = BASE_Y + LINE_H * count
-	setPos("pointer", -BIG.x / 2 + PAD + POINTER_X, top - LINE_H * (self.selected - 0.5))
+	setPos("pointer", -BIG.x / 2 + PAD + POINTER_X, CHOICES_TOP - LINE_H * (self.selected - 0.5))
 end
 
 local function showNode(self,nodeId)
-	self.entry = npc_data(self.id).nodes[nodeId]
+	local entry = npc_data(self.id).nodes[nodeId]
+	if not entry then
+		print("npc: chybí node'" .. tostring(nodeId) .. "' na '" .. tostring(self.id) .. "'")
+		entry = {text = ""}
+	end
+	self.entry = entry
 	self.typing = true
 	self.timer = 0
 	self.lastChars = 0
@@ -54,6 +54,7 @@ local function finishTyping(self)
 	if self.entry.choices then
 		local names = {}
 		for i, c in ipairs(self.entry.choices) do names[i] = c[1] end
+		label.set_text("choices#label", table.concat(names,"\n"))
 		msg.post("pointer#sprite", "enable")
 		updatePointer(self)
 	end
@@ -63,16 +64,23 @@ local function open (self, player)
 	self.talking = true
 	self.player = player
 
-	msg.post("bubble#thumb", "disable")
+	go.set_position(self.pos)
+	go.cancel_animations("bubble#bg", "size")
+	go.cancel_animations("bubble", "position.y")
+	go.set("bubble#bg", "size", SMALL)
+	setPos("bubble", nil, BASE_Y + SMALL.y /2)
+	
+	msg.post("bubble#bg", "enable")
 
 	go.animate("bubble#bg", "size", go.PLAYBACK_ONCE_FORWARD, BIG, go.EASING_OUTQUAD, GROW_TIME)
 	go.animate("bubble", "position.y", go.PLAYBACK_ONCE_FORWARD, BASE_Y + BIG.y /2, go.EASING_OUTQUAD, GROW_TIME)
 
 	setPos("text", -BIG.x /2 + PAD, BASE_Y + BIG.y - PAD)
-	setPos("choices", -BIG.x /2 + PAD + POINTER_X * 2, BASE_Y + LINE_H*3)
+	setPos("choices", -BIG.x /2 + PAD + POINTER_X * 2, CHOICES_TOP)
 
 	msg.post(".","acquire_input_focus")
 	msg.post(player,"dialogue_started")
+	msg.post(self.npcUrl,"dialogue_started")
 	showNode(self, npc_states.getStartNode(self.id))
 	self.timer = -GROW_TIME
 end
@@ -80,34 +88,25 @@ end
 local function close (self)
 	npc_states.applyEnding(self.id,self.entry.ending)
 	self.talking = false
-	label.set_text("text#label", "")
-	label.set_text("choices#label", "")
-	msg.post("pointer#sprite", "disable")
+	hideBubble()
 	msg.post(".", "release_input_focus")
 	msg.post("self.player", "dialogue_finished")
-	showThumb(self)
+	msg.post("self.npcUrl", "dialogue_finished")
 end
 
 function init(self)
 	self.id = nil
 	self.talking = false
 	self.typing = false
-	showThumb(self)
-	msg.post("pointer#sprite","disable")
-	label.set_text("text#label", "")
-	label.set_text("choices#label", "")
+	hideBubble()
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("npc_enter") then
 		if self.talking then return end
-		self.id, self.pos = message.id, message.pos
-		showThumb(self)
+		self.id, self.pos, self.npcUrl = message.id, message.pos, sender
 	elseif message_id == hash("npc_exit") then
-		if not self.talking and self.id == message.id then
-			self.id = nil
-			showThumb(self)
-		end
+		if not self.talking and self.id == message.id then self.id = nil end
 	elseif message_id == hash("talk") then
 		if not self.talking and self.id and npc_states.canInteract(self.id) then
 			open(self,sender)
@@ -122,10 +121,10 @@ function update(self, dt)
 
 	local style = npc_data(self.id).style or {}
 	local n = math.floor(self.timer * (self.cps or 30))
-	if n>= #self.entry.text then
+	if n>= utf_helper.utf8Len(self.entry.text) then
 		finishTyping(self)
 	else
-		label.set_text("text.label", self.entry.text.sub(1,n))
+		label.set_text("text#label", utf_helper.utf8Sub(self.entry.text))
 		if n ~= self.lastChars then
 			self.lastChars = n
 			--local sfx = style.blip or require("assets/sfx/npc/defaultBlip")

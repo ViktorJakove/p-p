@@ -1,4 +1,12 @@
 name: "main"
+collection_instances {
+  id: "test"
+  collection: "/collections/npc.collection"
+  position {
+    x: 506.0
+    y: 768.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "player"
@@ -91,6 +99,7 @@ embedded_instances {
   "restitution: 0.5\\n"
   "group: \\\"player\\\"\\n"
   "mask: \\\"ground\\\"\\n"
+  "mask: \\\"npc\\\"\\n"
   "embedded_collision_shape {\\n"
   "  shapes {\\n"
   "    shape_type: TYPE_BOX\\n"
@@ -228,8 +237,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 419.0
-    y: 824.0
+    x: 363.0
+    y: 899.0
   }
 }
 embedded_instances {
@@ -248,18 +257,6 @@ embedded_instances {
   "  sampler: \\\"texture_sampler\\\"\\n"
   "  texture: \\\"/main/main.atlas\\\"\\n"
   "}\\n"
-  "\"\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"thumb\"\n"
-  "  type: \"label\"\n"
-  "  data: \"size {\\n"
-  "  x: 128.0\\n"
-  "  y: 32.0\\n"
-  "}\\n"
-  "text: \\\"Label\\\"\\n"
-  "font: \\\"/builtins/fonts/default.font\\\"\\n"
-  "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
   "\"\n"
   "}\n"
   ""
@@ -308,6 +305,14 @@ embedded_instances {
   "  texture: \\\"/main/main.atlas\\\"\\n"
   "}\\n"
   "\"\n"
+  "  position {\n"
+  "    x: -47.0\n"
+  "    y: 1.0\n"
+  "  }\n"
+  "  scale {\n"
+  "    x: 0.75\n"
+  "    y: 0.75\n"
+  "  }\n"
   "}\n"
   ""
 }
@@ -637,61 +642,5 @@ embedded_instances {
   scale3 {
     x: 3.995891
     y: 8.425092
-  }
-}
-embedded_instances {
-  id: "test"
-  data: "components {\n"
-  "  id: \"npc\"\n"
-  "  component: \"/scripts/npc/npc.script\"\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"sprite\"\n"
-  "  type: \"sprite\"\n"
-  "  data: \"default_animation: \\\"draft1ci\\\"\\n"
-  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
-  "size {\\n"
-  "  x: 32.0\\n"
-  "  y: 32.0\\n"
-  "}\\n"
-  "textures {\\n"
-  "  sampler: \\\"texture_sampler\\\"\\n"
-  "  texture: \\\"/assets/images/testatlas.atlas\\\"\\n"
-  "}\\n"
-  "\"\n"
-  "  scale {\n"
-  "    x: 2.0\n"
-  "    y: 2.0\n"
-  "  }\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"collisionobject\"\n"
-  "  type: \"collisionobject\"\n"
-  "  data: \"type: COLLISION_OBJECT_TYPE_TRIGGER\\n"
-  "mass: 0.0\\n"
-  "friction: 0.1\\n"
-  "restitution: 0.5\\n"
-  "group: \\\"npc\\\"\\n"
-  "mask: \\\"player\\\"\\n"
-  "embedded_collision_shape {\\n"
-  "  shapes {\\n"
-  "    shape_type: TYPE_BOX\\n"
-  "    position {\\n"
-  "    }\\n"
-  "    rotation {\\n"
-  "    }\\n"
-  "    index: 0\\n"
-  "    count: 3\\n"
-  "  }\\n"
-  "  data: 44.962307\\n"
-  "  data: 29.27763\\n"
-  "  data: 10.0\\n"
-  "}\\n"
-  "\"\n"
-  "}\n"
-  ""
-  position {
-    x: 418.0
-    y: 765.0
   }
 }

@@ -20,7 +20,7 @@ return{
 		completed = "afterend"
 	},
 	nodes ={
-		t0 = say("nazdaaar baby", "t1"),
+		t0 = say("nazdaaar~9 baby", "t1"),
 		t1 = say("dlouho jsme se neviděli... mama", "ask0"),
 		ask0 = ask( "co se dějě babyMAMA?",
 			{"nic", "RESET"},

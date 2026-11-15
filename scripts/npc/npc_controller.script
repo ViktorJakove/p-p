@@ -45,6 +45,9 @@ local function showNode(self,nodeId)
 	self.timer = 0
 	self.lastChars = 0
 	self.selected = 1
+
+	self.stall, self.paused = 0, {}
+	
 	label.set_text("text#label", "")
 	label.set_text("choices#label", "")
 	msg.post("pointer#sprite","disable")
@@ -52,7 +55,7 @@ end
 
 local function finishTyping(self)
 	self.typing = false
-	label.set_text("text#label", self.entry.text)
+	label.set_text("text#label", (self.entry.text:gsub("~%d?", "")))
 	if self.entry.choices then
 		local names = {}
 		for i, c in ipairs(self.entry.choices) do names[i] = c[1] end
@@ -126,6 +129,7 @@ end
 
 function update(self, dt)
 	if not self.talking or not self.typing then return end
+	if self.stall > 0 then self.stall = self.stall - dt return end
 	self.timer = self.timer + dt
 	if self.timer < 0 then return end
 
@@ -134,12 +138,14 @@ function update(self, dt)
 	if n>= utf_helper.utf8Len(self.entry.text) then
 		finishTyping(self)
 	else
-		label.set_text("text#label", utf_helper.utf8Sub(self.entry.text,n))
-		if n ~= self.lastChars then
-			self.lastChars = n
-			--local sfx = style.blip or require("assets/sfx/npc/defaultBlip")
-			--sound.play(sfx)
+		local shown = utf_helper.utf8Sub(self.entry.text,n)
+		local len = shown:match("~(%d)$")
+		if len and not self.paused[n] then
+			self.paused[n] = true
+			self.stall = tonumber(len) /10
+			--přehrát sound
 		end
+		label.set_text("text#label", (shown:gsub("~%d?", "")))
 	end
 end
 

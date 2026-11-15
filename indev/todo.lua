@@ -6,7 +6,6 @@
 ----screen shake (crash)
 
 --textsys
---playerstop!!!
 -- malinkej zoom na postavu
 --zvuk vydělit počet chars bez teček a vykřičníků a dat jenom par random zvuku
 -- tilda a cislo ~9 je 0.9 wait

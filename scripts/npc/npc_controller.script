@@ -3,6 +3,8 @@ local npc_states = require("scripts.npc.npc_states")
 
 local utf_helper = require("scripts.npc.utf_helper")
 
+local camera_state = require("scripts.camera.camera_state")
+
 local SMALL = vmath.vector3(120,40,0)
 local BIG = vmath.vector3(320,140,0)
 local BASE_Y = 60
@@ -83,6 +85,8 @@ local function open (self, player)
 	msg.post(self.npcUrl,"dialogue_started")
 	showNode(self, npc_states.getStart(self.id))
 	self.timer = -GROW_TIME
+
+	camera_state.focus = self.pos
 end
 
 local function close (self)
@@ -92,6 +96,8 @@ local function close (self)
 	msg.post(".", "release_input_focus")
 	msg.post(self.player, "dialogue_finished")
 	msg.post(self.npcUrl, "dialogue_finished")
+
+	camera_state.focus = nil
 end
 
 function init(self)

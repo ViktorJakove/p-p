@@ -1,5 +1,6 @@
 return {
 	state = "m_idle",
+	focus = nil,
 
 	lagStates = {
 		m_pound = 1,

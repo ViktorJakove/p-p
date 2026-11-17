@@ -1,19 +1,23 @@
---fly
-
---pokud jump ze swimu stejnou stranou tak speed stejnej jako swimspeed
------  kontroluje jestli se moveDir rovná facing když ne tak speed.resetSpeed
----  boostDir ve stavu
+--textsys!!!!!!!!!!!
+--bubble by se mel objevit tam, kde je thumb bubble (+ offset od postavy)
+-- při zoomu trochu ztmavit horni a spodni kraje obrazovky????
+--zvuk vydělit počet chars bez teček a vykřičníků a dat jenom par random zvuku
+--id animace a animace ke kazdymu nodu a thumbnailu
+---choices se taky napisou
+--design
 
 --kamera
----- BOUNDARIES
-----screenchange- stoptime (bounce, pound)
+----stoptime (bounce, pound)
 ----screen shake (crash)
 
---textsys
+--camera trochu offset nahoru
+--fly
 
 --feel
 ----coyote time
 ----highjump i chvilinku po pusteni crouche?
+
+--combat/hp
 
 --gui
 ---vlevo nahore ukazatel dashu (od 2), vpravo twirl reload

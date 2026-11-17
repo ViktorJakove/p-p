@@ -1,0 +1,62 @@
+
+go.property("target", msg.url("/player"))
+
+local cameraState = require("scripts.camera.camera_state")
+
+go.property("maxLagX",0)
+go.property("maxLagY",0)
+go.property("lagSpeed",0)
+go.property("catchupSpeed",0)
+
+go.property("follow_speed_x", 0)
+go.property("follow_speed_y", 0)
+
+go.property("dialogue_zoom_x", 0)
+go.property("focus_pull", 0)
+go.property("focus_speed", 0)
+
+function init(self)
+	local p = go.get_world_position(self.target)
+	self.prev = p
+	self.base = vmath.vector3(p)
+	self.offset = vmath.vector3()
+	self.z = go.get_position().z
+
+
+	local c = vmath.vector3(p)
+	c.z = self.z
+	go.set_position(c)
+end
+
+local function damp(k,dt)
+	return 1 - math.exp(-k * dt)
+end
+
+function update(self, dt)
+	if dt <= 0 then return end
+
+	local pos = go.get_world_position(self.target)
+	local vel = (pos-self.prev)/dt
+	self.prev = pos
+
+	self.base.x = self.base.x + (pos.x - self.base.x) * damp(self.follow_speed_x, dt)
+	self.base.y = self.base.y + (pos.y - self.base.y) * damp(self.follow_speed_y, dt)
+
+	local desired = vmath.vector3()
+	local multiplicator = cameraState.lagStates[cameraState.state]
+	if multiplicator then
+		local speed = vmath.length(vel)
+		if speed > 50 then
+			local dir = vel / speed
+			desired = vmath.vector3(-dir.x *multiplicator *self.maxLagX, -dir.y *multiplicator* self.maxLagY, 0)
+		end
+	end
+
+	local growing = vmath.length(desired) > vmath.length(self.offset)
+	local k = growing and self.lagSpeed or self.catchupSpeed
+	self.offset = self.offset + (desired - self.offset) *damp(k, dt)
+
+	local cam = self.base + self.offset
+	cam.z = self.z
+	go.set_position(cam)
+end

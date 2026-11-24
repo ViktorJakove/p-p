@@ -1,0 +1,8 @@
+name: "npc_vignette"
+tags: "gui"
+vertex_program: "/builtins/materials/gui.vp"
+fragment_program: "/materials/npc_vignette/vignette.fp"
+vertex_constants {
+  name: "view_proj"
+  type: CONSTANT_TYPE_VIEWPROJ
+}

@@ -664,3 +664,11 @@ embedded_instances {
     y: 8.425092
   }
 }
+embedded_instances {
+  id: "vignette"
+  data: "components {\n"
+  "  id: \"vignette\"\n"
+  "  component: \"/materials/npc_vignette/vignette.gui\"\n"
+  "}\n"
+  ""
+}

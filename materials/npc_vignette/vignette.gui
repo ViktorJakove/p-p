@@ -1,0 +1,18 @@
+script: "/materials/npc_vignette/vignette_shader.gui_script"
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "screen"
+  adjust_mode: ADJUST_MODE_STRETCH
+  inherit_alpha: true
+  material: "npc_vignette"
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT
+materials {
+  name: "npc_vignette"
+  material: "/materials/npc_vignette/npc_vignette.material"
+}

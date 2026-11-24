@@ -89,6 +89,8 @@ local function open (self, player)
 	showNode(self, npc_states.getStart(self.id))
 	self.timer = -GROW_TIME
 
+	msg.post("/vignette#vignette", "show")
+
 	camera_state.focus = self.pos
 end
 
@@ -99,6 +101,8 @@ local function close (self)
 	msg.post(".", "release_input_focus")
 	msg.post(self.player, "dialogue_finished")
 	msg.post(self.npcUrl, "dialogue_finished")
+
+	msg.post("/vignette#vignette", "hide")
 
 	camera_state.focus = nil
 end

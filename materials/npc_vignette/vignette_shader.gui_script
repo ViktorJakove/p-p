@@ -1,0 +1,17 @@
+local TIME = 0.4
+
+function init(self)
+	local w, h = gui.get_width(), gui.get_height()
+	self.node = gui.get_node("screen")
+	gui.set_size(self.node, vmath.vector3(w, h, 0))
+	gui.set_position(self.node, vmath.vector3(w / 2, h / 2, 0))
+	gui.set_color(self.node, vmath.vector4(1, 1, 1, 0))
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("show") then
+		gui.animate(self.node, "color.w", 1, gui.EASING_OUTQUAD, TIME)
+	elseif message_id == hash("hide") then
+		gui.animate(self.node, "color.w", 0, gui.EASING_OUTQUAD, TIME)
+	end
+end

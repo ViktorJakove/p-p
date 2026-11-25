@@ -1,5 +1,6 @@
 local npc_data = require("scripts.npc.npc_data")
 local npc_states = require("scripts.npc.npc_states")
+local npc_sfx = require("scripts.npc.npc_sound")
 
 local utf_helper = require("scripts.npc.utf_helper")
 
@@ -15,6 +16,10 @@ local GROW_TIME = 0.2
 
 local MAX_CHOICES = 3
 local CHOICES_TOP = BASE_Y + PAD + LINE_H * MAX_CHOICES
+
+local IGNORE = {
+	" ",".", ",", "!", "?", ":", ";","-","*","~",'"',"'", "(", ")",
+}
 
 local function setPos(id,x,y)
 	local p = go.get_position(id)
@@ -35,6 +40,7 @@ local function updatePointer(self)
 end
 
 local function showNode(self,nodeId)
+
 	local entry = npc_data(self.id).nodes[nodeId]
 	if not entry then
 		print("npc: chybí node'" .. tostring(nodeId) .. "' na '" .. tostring(self.id) .. "'")
@@ -51,6 +57,8 @@ local function showNode(self,nodeId)
 	label.set_text("text#label", "")
 	label.set_text("choices#label", "")
 	msg.post("pointer#sprite","disable")
+
+	npc_sfx.playBlips(utf_helper.utf8Len(entry.text,IGNORE),npc_data(self.id).style)
 end
 
 local function finishTyping(self)
@@ -92,6 +100,7 @@ local function open (self, player)
 	msg.post("/vignette#vignette", "show")
 
 	camera_state.focus = self.pos
+	--sound.play("/sfx#shhIN")
 end
 
 local function close (self)

@@ -672,3 +672,15 @@ embedded_instances {
   "}\n"
   ""
 }
+embedded_instances {
+  id: "sfx"
+  data: "components {\n"
+  "  id: \"testblip\"\n"
+  "  component: \"/assets/sfx/testblip.sound\"\n"
+  "}\n"
+  "components {\n"
+  "  id: \"testblip1\"\n"
+  "  component: \"/assets/sfx/testblip1.sound\"\n"
+  "}\n"
+  ""
+}

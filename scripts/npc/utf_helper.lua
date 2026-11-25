@@ -1,6 +1,13 @@
 local M = {}
 
-function M.utf8Len(s)
+function M.utf8Len(s,omit)
+	if omit then
+		for _, ch in ipairs(omit) do
+			--nesmaze vsechno (.% = special chars)
+			local escaped = ch:gsub("%W", "%%%0")
+			s = s:gsub(escaped, "")
+		end
+	end
 	local _, count = s:gsub("[^\128-\191]","")
 	return count
 end

@@ -1,7 +1,6 @@
 --textsys!!!!!!!!!!!
 -- zvětšení bubble podle velikosti textu (text pojede od prostředku??)
 --bubble by se mel objevit tam, kde ma svuj thumb bubble (+ offset od postavy)
---zvuk vydělit počet chars bez teček a vykřičníků a dat jenom par random zvuku
 --id animace a animace ke kazdymu nodu a thumbnailu
 ---choices se taky napisou
 --design

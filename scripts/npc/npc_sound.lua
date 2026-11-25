@@ -7,7 +7,7 @@ end
 function M.playBlips(len,style)
 
 	if len == 0 then return end
-		
+
 	local times = len / style.cps / style.blipLen
 	times = math.min(1, times)
 	print(times)

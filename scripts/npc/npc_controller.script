@@ -156,7 +156,6 @@ function update(self, dt)
 		if len and not self.paused[n] then
 			self.paused[n] = true
 			self.stall = tonumber(len) /10
-			--přehrát sound
 		end
 		label.set_text("text#label", (shown:gsub("~%d?", "")))
 	end

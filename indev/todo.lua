@@ -1,4 +1,5 @@
 --textsys!!!!!!!!!!!
+---malinký delay před spuštěním zvuku a vypnutí při skipu
 -- zvětšení bubble podle velikosti textu (text pojede od prostředku??)
 --bubble by se mel objevit tam, kde ma svuj thumb bubble (+ offset od postavy)
 --id animace a animace ke kazdymu nodu a thumbnailu

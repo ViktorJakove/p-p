@@ -5,8 +5,8 @@ local say, ask = h.say, h.ask
 return{
 	style = {
 		cps = 35,
-		blips = {"testblip","testblip1"},
-		blipLen = 0.5
+		blips = {"testblip1"},
+		blipLen = 0.3
 	},
 	
 	blocked_states = { locked = true },
@@ -22,13 +22,13 @@ return{
 	},
 	nodes ={
 		t0 = say("ayooooooooooooo~9oooooooooo", "t1"),
-		t1 = say("dlouho jsme se neviděli... mama", "ask0"),
+		t1 = say("dlouho jsme se neviděli... mamaaaaaaasdbksdblkusbcslbvukdzbslbdlvsubdz~9,jhfbvkuehvbrkuezkuzekudzvekudzvgukgedkucevdukczgea", "ask0"),
 		ask0 = ask( "co se dějě babyMAMA?",
 			{"nic", "RESET"},
 			{ "Come to war with me", "recruit" },
 			{ "chcípni kundo",  "insult" }
 		),
-		recruit = say("hell yeah baby mama",nil, "END"),
+		recruit = say("hel",nil, "END"),
 		insult = say("sám si naser!!!!!! fucker",nil, "LOCK"),
 		afterend = say("mgfitman babymama")
 	}

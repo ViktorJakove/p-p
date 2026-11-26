@@ -9,7 +9,7 @@ local function play(blips)
 	local id = sound.play(url)
 end
 
-function M.playBlips(text,style,omit)
+function M.playBlips(text,style,omit, initDelay)
 
 	local pos = 1
 	local startTime = 0
@@ -20,7 +20,7 @@ function M.playBlips(text,style,omit)
 
 		local length = utf_helper.utf8Len(chunk, omit)
 
-		local delay = pos == 1 and DELAY or 0 
+		local delay = pos == 1 and DELAY + initDelay or initDelay
 		
 		if length > 0 then
 			local count = ((length / style.cps) - delay) / style.blipLen

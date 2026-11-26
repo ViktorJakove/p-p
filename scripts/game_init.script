@@ -1,0 +1,4 @@
+function init(self)
+	--preheat zvuků
+	msg.post("/sfx", "play_sound", {gain = 0})
+end

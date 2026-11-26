@@ -5,7 +5,8 @@ local DELAY = 0.05
 local handles = {}
 
 local function play(blips)
-	sound.play("/sfx#" .. tostring(blips[math.random(#blips)]))
+	local url = "/sfx#" .. tostring(blips[math.random(#blips)])
+	local id = sound.play(url)
 end
 
 function M.playBlips(text,style,omit)

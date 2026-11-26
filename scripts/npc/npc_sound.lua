@@ -2,6 +2,7 @@ local M = {}
 local utf_helper = require("scripts.npc.utf_helper")
 
 local DELAY = 0.05
+local handles = {}
 
 local function play(blips)
 	sound.play("/sfx#" .. tostring(blips[math.random(#blips)]))
@@ -9,7 +10,6 @@ end
 
 function M.playBlips(text,style,omit)
 
-	local handles = {}
 	local pos = 1
 	local startTime = 0
 
@@ -43,6 +43,11 @@ function M.playBlips(text,style,omit)
 	end
 
 	return handles
+end
+
+function M.stop()
+	for _, h in ipairs(handles or {}) do timer.cancel(h) end
+	handles = {}
 end
 
 return M

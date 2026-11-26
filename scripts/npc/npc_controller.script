@@ -64,6 +64,8 @@ end
 local function finishTyping(self)
 	self.typing = false
 	label.set_text("text#label", (self.entry.text:gsub("~%d?", "")))
+	npc_sfx.stop()
+	
 	if self.entry.choices then
 		local names = {}
 		for i, c in ipairs(self.entry.choices) do names[i] = c[1] end

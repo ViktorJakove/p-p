@@ -22,7 +22,7 @@ return{
 	},
 	nodes ={
 		t0 = say("ayooooooooooooo~9oooooooooo", "t1"),
-		t1 = say("dlouho jsme se neviděli... mamaaaaaaasdbksdblkusbcslbvukdzbslbdlvsubdz~9,jhfbvkuehvbrkuezkuzekudzvekudzvgukgedkucevdukczgea", "ask0"),
+		t1 = say("dlouho jsme se neviděli... mamaaaaaaasdbksdblkusbcslbvukdzbslbdlvsubdz,~9jhfbvkuehvbrkuezkuzekudzvekudzvgukgedkucevdukczgea", "ask0"),
 		ask0 = ask( "co se dějě babyMAMA?",
 			{"nic", "RESET"},
 			{ "Come to war with me", "recruit" },

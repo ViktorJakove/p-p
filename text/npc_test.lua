@@ -26,10 +26,10 @@ return{
 		ask0 = ask( "co se dějě babyMAMA?",
 			{"nic", "RESET"}
 			,{ "Come to war with me", "recruit" }
-			,{ "chcípni kundo",  "insult" }
+			,{ "chcípni kundo",  "evil" }
 		),
 		recruit = say("hel",nil, "END"),
-		insult = say("sám si naser!!!!!! fucker",nil, "LOCK"),
+		evil = say("sám si naser!!!!!! fucker",nil, "LOCK"),
 		afterend = say("mgfitman babymama")
 	}
 }

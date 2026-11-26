@@ -68,6 +68,8 @@ local function showNode(self,nodeId)
 	npc_sfx.playBlips(entry.text,npc_data(self.id).style,IGNORE,GROW_TIME)
 end
 
+local function isEvil(choice) return choice[2] == "evil" end
+
 local function startChoices(self)
 	local names = {}
 	for i, c in ipairs(self.entry.choices) do names[i] = c[1] end
@@ -179,9 +181,13 @@ function update(self, dt)
 		if k > total then finishChoices(self)
 		elseif k ~= self.shownChoices then
 			self.shownChoices = k
+
+			--pokud je evil tak to sníží total a evil se ukáže až po dvojnásobku času (wait time na pointer a celý to posune nahoru přidáním další části ve finishChoices (nepočítalo to s tim)
+			total = isEvil(self.entry.choices[total]) and total - 1 or total
+			
 			local lines = {}
-			for i = 1, total +1 do
-				lines[i] = (i <= k) and self.choiceNames[i] or ""
+			for i = 1, total do
+				lines[i] = (i <= k) and self.choiceNames[i] or " "
 			end
 			label.set_text("choices#label", table.concat(lines, "\n"))
 			npc_sfx.remotePlay(player_style.style.blips)

@@ -18,5 +18,3 @@ WARNING:GAMESYS: Function 'label.set_text' is deprecated. Please use 'go.set' in
 DEBUG:SCRIPT: idle
 DEBUG:SCRIPT: fall
 DEBUG:SCRIPT: idle
-DEBUG:SCRIPT: run
-DEBUG:SCRIPT: idle

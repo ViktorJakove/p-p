@@ -9,6 +9,8 @@ local function play(blips)
 	local id = sound.play(url)
 end
 
+function M.remotePlay(blips) play(blips) end
+
 function M.playBlips(text,style,omit, initDelay)
 
 	local pos = 1

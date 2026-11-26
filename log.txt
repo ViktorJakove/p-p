@@ -1,5 +1,5 @@
 INFO:DLIB: Writing log to: ./log.txt
-INFO:ENGINE: Loading data from: http://127.0.0.1:53997/build
+INFO:ENGINE: Loading data from: build/default
 INFO:SOUND: Mix format:
 INFO:SOUND:   wFormatTag:       fffe  IEEE_FLOAT/PCM/EXTENSIBLE: 3 / 1 / fffe
 INFO:SOUND:   nChannels:        2
@@ -8,14 +8,15 @@ INFO:SOUND:   nAvgBytesPerSec:  384000
 INFO:SOUND:   nBlockAlign:      8
 INFO:SOUND:   wBitsPerSample:   32
 INFO:SOUND:   -> Format:        3  IEEE_FLOAT/PCM/EXTENSIBLE: 3 / 1 / fffe
+INFO:SOUND:   DSP backend: SSE
 INFO:SOUND: Sound
 INFO:SOUND:   nSamplesPerSec:   48000
 INFO:SOUND:        useThread:   1
 INFO:ENGINE: Initialised sound device 'default'
 INFO:PHYSICS: Created physics context: Box2D v2.2.1
+WARNING:GAMESYS: Function 'label.set_text' is deprecated. Please use 'go.set' instead.
 DEBUG:SCRIPT: idle
 DEBUG:SCRIPT: fall
 DEBUG:SCRIPT: idle
 DEBUG:SCRIPT: run
 DEBUG:SCRIPT: idle
-INFO:DLIB: Flushing http cache to disk

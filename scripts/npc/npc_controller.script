@@ -6,6 +6,8 @@ local utf_helper = require("scripts.npc.utf_helper")
 
 local camera_state = require("scripts.camera.camera_state")
 
+local player_style = require("scripts.npc.player_style")
+
 local SMALL = vmath.vector3(120,40,0)
 local BIG = vmath.vector3(320,140,0)
 local BASE_Y = 60
@@ -13,6 +15,8 @@ local PAD = 14
 local LINE_H = 20
 local POINTER_X = 12
 local GROW_TIME = 0.2
+
+local CHOICE_DELAY = 0.6
 
 local MAX_CHOICES = 3
 local CHOICES_TOP = BASE_Y + PAD + LINE_H * MAX_CHOICES
@@ -52,6 +56,9 @@ local function showNode(self,nodeId)
 	self.lastChars = 0
 	self.selected = 1
 
+	self.phase = "text"
+	self.choicesText = nil
+
 	self.stall, self.paused = 0, {}
 	
 	label.set_text("text#label", "")
@@ -61,17 +68,32 @@ local function showNode(self,nodeId)
 	npc_sfx.playBlips(entry.text,npc_data(self.id).style,IGNORE,GROW_TIME)
 end
 
-local function finishTyping(self)
+local function startChoices(self)
+	local names = {}
+	for i, c in ipairs(self.entry.choices) do names[i] = c[1] end
+	self.choiceNames = names
+	self.choicesText = table.concat(names,"\n")
+	self.phase = "choices"
+	self.timer = 0
+	self.stall = 0
+	self.shownChoices = 0
+	self.typing = true
+end
+
+local function finishChoices(self)
 	self.typing = false
+	label.set_text("choices#label", self.choicesText)
+	msg.post("pointer#sprite", "enable")
+	updatePointer(self)
+end
+
+local function finishTyping(self)
 	label.set_text("text#label", (self.entry.text:gsub("~%d?", "")))
 	
 	if self.entry.choices then
-		local names = {}
-		for i, c in ipairs(self.entry.choices) do names[i] = c[1] end
-		label.set_text("choices#label", table.concat(names,"\n"))
-		msg.post("pointer#sprite", "enable")
-		updatePointer(self)
-	end
+		if self.phase == "text" then startChoices(self)
+		else finishChoices(self) end
+	else self.typing = false end
 end
 
 local function open (self, player)
@@ -149,6 +171,24 @@ function update(self, dt)
 
 	local style = npc_data(self.id).style or {}
 	local n = math.floor(self.timer * (style.cps or 30))
+
+	if self.phase == "choices" then
+		local total = #self.choiceNames
+		local k = math.floor(self.timer / CHOICE_DELAY) + 1
+		
+		if k > total then finishChoices(self)
+		elseif k ~= self.shownChoices then
+			self.shownChoices = k
+			local lines = {}
+			for i = 1, total +1 do
+				lines[i] = (i <= k) and self.choiceNames[i] or ""
+			end
+			label.set_text("choices#label", table.concat(lines, "\n"))
+			npc_sfx.remotePlay(player_style.style.blips)
+		end
+		return
+	end
+	
 	if n>= utf_helper.utf8Len(self.entry.text) then
 		finishTyping(self)
 	else
@@ -157,7 +197,6 @@ function update(self, dt)
 		if len and not self.paused[n] then
 			self.paused[n] = true
 			self.stall = tonumber(len) /10
-			--
 		end
 		label.set_text("text#label", (shown:gsub("~%d?", "")))
 	end
@@ -170,7 +209,9 @@ function on_input(self, action_id, action)
 	
 	if action_id == hash("attack") then
 		if self.typing then 
+			--přeskočit obě fáze (text, choices,)
 			finishTyping(self) 
+			if(self.phase == "choices") then finishTyping(self)end
 			npc_sfx.stop()
 		elseif self.entry.choices then
 			local target = self.entry.choices[self.selected][2]

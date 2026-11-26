@@ -24,9 +24,9 @@ return{
 		t0 = say("ayooooooooooooo~9oooooooooo", "t1"),
 		t1 = say("dlouho jsme se neviděli... mamaaaaaaasdbksdblkusbcslbvukdzbslbdlvsubdz,~4jhfbvkuehvbrkuezkuzekudzvekudzvgukgedkucevdukczgea", "ask0"),
 		ask0 = ask( "co se dějě babyMAMA?",
-			{"nic", "RESET"},
-			{ "Come to war with me", "recruit" },
-			{ "chcípni kundo",  "insult" }
+			{"nic", "RESET"}
+			,{ "Come to war with me", "recruit" }
+			,{ "chcípni kundo",  "insult" }
 		),
 		recruit = say("hel",nil, "END"),
 		insult = say("sám si naser!!!!!! fucker",nil, "LOCK"),
